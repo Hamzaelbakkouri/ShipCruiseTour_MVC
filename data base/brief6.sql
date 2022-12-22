@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Dec 19, 2022 at 05:24 PM
--- Server version: 10.4.25-MariaDB
--- PHP Version: 8.1.10
+-- Hôte : 127.0.0.1
+-- Généré le : lun. 19 déc. 2022 à 11:58
+-- Version du serveur : 10.4.25-MariaDB
+-- Version de PHP : 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,229 +18,292 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `brief6`
+-- Base de données : `ship cruise tour`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `chambre`
+-- Structure de la table `admin`
 --
 
-CREATE TABLE `chambre` (
-  `id_ch` int(11) NOT NULL,
-  `numero_ch` int(11) NOT NULL,
-  `type_ch` int(11) NOT NULL
+CREATE TABLE `admin` (
+  `id` int(11) NOT NULL,
+  `email` varchar(40) NOT NULL,
+  `password` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `admin`
+--
+
+INSERT INTO `admin` (`id`, `email`, `password`) VALUES
+(1, 'admin@gmail.com', 'admin');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `category`
+--
+
+CREATE TABLE `category` (
+  `id` int(100) NOT NULL,
+  `label` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Déchargement des données de la table `category`
+--
+
+INSERT INTO `category` (`id`, `label`) VALUES
+(1, 'solo room'),
+(2, 'room for 2 personnes '),
+(3, 'family room');
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `croisiere`
+-- Structure de la table `clients`
 --
 
-CREATE TABLE `croisiere` (
-  `id_cr` int(11) NOT NULL,
-  `port_dar` int(11) NOT NULL,
-  `port_dep` int(11) NOT NULL,
-  `image` varchar(255) NOT NULL,
-  `nb_nuit` int(11) NOT NULL,
-  `prix_cr` float NOT NULL,
-  `date-dep` date NOT NULL
+CREATE TABLE `clients` (
+  `id` int(11) NOT NULL,
+  `fullName` varchar(40) NOT NULL,
+  `firstName` varchar(40) NOT NULL,
+  `email` varchar(40) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `role` varchar(40) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `clients`
+--
+
+INSERT INTO `clients` (`id`, `fullName`, `firstName`, `email`, `password`, `role`) VALUES
+(1, 'abderrahmane elhamel', 'abderrahmane', 'abderrahmane@gmail.com', '1a1dc91c907325c69271ddf0c944bc72', 'client'),
+(2, 'abdo el', 'abdo', 'abdo@gmail.com', '1a1dc91c907325c69271ddf0c944bc72', 'client');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `cruises`
+--
+
+CREATE TABLE `cruises` (
+  `id-cruise` int(100) NOT NULL,
+  `ship` varchar(100) NOT NULL,
+  `price` int(11) NOT NULL,
+  `img` varchar(1000) NOT NULL,
+  `num-of-nights` int(100) NOT NULL,
+  `port-of-departure` varchar(100) NOT NULL,
+  `cruise-itinerary` varchar(500) NOT NULL,
+  `date-of-departure` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
-
 --
--- Table structure for table `navire`
+-- Déchargement des données de la table `cruises`
 --
 
-CREATE TABLE `navire` (
-  `id_n` int(11) NOT NULL,
-  `name-n` varchar(255) NOT NULL,
-  `nb_ch` int(11) NOT NULL,
-  `nb_pl` int(11) NOT NULL,
-  `port_depart` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+INSERT INTO `cruises` (`id-cruise`, `ship`, `price`, `img`, `num-of-nights`, `port-of-departure`, `cruise-itinerary`, `date-of-departure`) VALUES
+(1, 'titanic', 300, '', 5, 'tanger', 'tanger-gibraltar-palma-malta', '2022-12-26');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `port`
+-- Structure de la table `port`
 --
 
 CREATE TABLE `port` (
-  `id_p` int(11) NOT NULL,
-  `nameP` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `id` int(11) NOT NULL,
+  `name` varchar(40) NOT NULL,
+  `country` varchar(40) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `port`
+--
+
+INSERT INTO `port` (`id`, `name`, `country`) VALUES
+(1, 'tanger', 'morocco');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `reservation`
+-- Structure de la table `reservation`
 --
 
 CREATE TABLE `reservation` (
-  `id_re` int(11) NOT NULL,
-  `date_re` date NOT NULL,
-  `prix-re` float NOT NULL,
-  `id_na` int(11) NOT NULL COMMENT 'id de narive'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `id` int(11) NOT NULL,
+  `costumer` varchar(40) NOT NULL,
+  `cruise` varchar(40) NOT NULL,
+  `reservation-date` date NOT NULL,
+  `reservation-price` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `reservation`
+--
+
+INSERT INTO `reservation` (`id`, `costumer`, `cruise`, `reservation-date`, `reservation-price`) VALUES
+(1, 'abderrahmane', '1', '2022-12-23', 300);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `typechambre`
+-- Structure de la table `rooms`
 --
 
-CREATE TABLE `typechambre` (
-  `id_t_ch` int(11) NOT NULL,
-  `Name` varchar(255) NOT NULL,
-  `Prix` int(11) NOT NULL,
-  `Capacite` int(11) NOT NULL COMMENT 'nombre des gens dans chaque chambre'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `rooms` (
+  `id` int(11) NOT NULL,
+  `ship` varchar(40) NOT NULL,
+  `room-num` int(11) NOT NULL,
+  `room-type` int(100) NOT NULL,
+  `price` int(11) NOT NULL,
+  `capacity` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `rooms`
+--
+
+INSERT INTO `rooms` (`id`, `ship`, `room-num`, `room-type`, `price`, `capacity`) VALUES
+(1, 'titanic', 4, 1, 200, 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Structure de la table `ship`
 --
 
-CREATE TABLE `users` (
-  `id_u` int(11) NOT NULL,
-  `FName` varchar(255) NOT NULL,
-  `LName` varchar(255) NOT NULL,
-  `Email` varchar(255) NOT NULL,
-  `Password` varchar(255) NOT NULL,
-  `Role` tinyint(4) NOT NULL DEFAULT 0 COMMENT '0 for members / 1 for admin'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `ship` (
+  `id` int(11) NOT NULL,
+  `name` varchar(40) NOT NULL,
+  `num-of-rooms` int(11) NOT NULL,
+  `num-of-places` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Indexes for dumped tables
+-- Déchargement des données de la table `ship`
+--
+
+INSERT INTO `ship` (`id`, `name`, `num-of-rooms`, `num-of-places`) VALUES
+(1, 'titanic', 5, 10);
+
+--
+-- Index pour les tables déchargées
 --
 
 --
--- Indexes for table `chambre`
+-- Index pour la table `admin`
 --
-ALTER TABLE `chambre`
-  ADD PRIMARY KEY (`id_ch`);
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `croisiere`
+-- Index pour la table `category`
 --
-ALTER TABLE `croisiere`
-  ADD PRIMARY KEY (`id_cr`),
-  ADD KEY `port_de_depart` (`port_dep`),
-  ADD KEY `port_de_arriver` (`port_dar`);
+ALTER TABLE `category`
+  ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `navire`
+-- Index pour la table `clients`
 --
-ALTER TABLE `navire`
-  ADD PRIMARY KEY (`id_n`),
-  ADD UNIQUE KEY `nb_ch` (`nb_ch`),
-  ADD KEY `premier_port` (`port_depart`);
+ALTER TABLE `clients`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`);
 
 --
--- Indexes for table `port`
+-- Index pour la table `cruises`
+--
+ALTER TABLE `cruises`
+  ADD PRIMARY KEY (`id-cruise`);
+
+--
+-- Index pour la table `port`
 --
 ALTER TABLE `port`
-  ADD PRIMARY KEY (`id_p`);
+  ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `reservation`
+-- Index pour la table `reservation`
 --
 ALTER TABLE `reservation`
-  ADD PRIMARY KEY (`id_re`),
-  ADD KEY `id_narive` (`id_na`);
+  ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `typechambre`
+-- Index pour la table `rooms`
 --
-ALTER TABLE `typechambre`
-  ADD PRIMARY KEY (`id_t_ch`);
+ALTER TABLE `rooms`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `room-type` (`room-type`);
 
 --
--- Indexes for table `users`
+-- Index pour la table `ship`
 --
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id_u`);
+ALTER TABLE `ship`
+  ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT pour les tables déchargées
 --
 
 --
--- AUTO_INCREMENT for table `chambre`
+-- AUTO_INCREMENT pour la table `admin`
 --
-ALTER TABLE `chambre`
-  MODIFY `id_ch` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `admin`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `croisiere`
+-- AUTO_INCREMENT pour la table `category`
 --
-ALTER TABLE `croisiere`
-  MODIFY `id_cr` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `category`
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `navire`
+-- AUTO_INCREMENT pour la table `clients`
 --
-ALTER TABLE `navire`
-  MODIFY `id_n` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `clients`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT for table `port`
+-- AUTO_INCREMENT pour la table `cruises`
+--
+ALTER TABLE `cruises`
+  MODIFY `id-cruise` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT pour la table `port`
 --
 ALTER TABLE `port`
-  MODIFY `id_p` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `reservation`
+-- AUTO_INCREMENT pour la table `reservation`
 --
 ALTER TABLE `reservation`
-  MODIFY `id_re` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `typechambre`
+-- AUTO_INCREMENT pour la table `rooms`
 --
-ALTER TABLE `typechambre`
-  MODIFY `id_t_ch` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `rooms`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT pour la table `ship`
 --
-ALTER TABLE `users`
-  MODIFY `id_u` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `ship`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- Constraints for dumped tables
+-- Contraintes pour les tables déchargées
 --
 
 --
--- Constraints for table `chambre`
+-- Contraintes pour la table `rooms`
 --
-ALTER TABLE `chambre`
-  ADD CONSTRAINT `typeofchambre` FOREIGN KEY (`id_ch`) REFERENCES `typechambre` (`id_t_ch`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `croisiere`
---
-ALTER TABLE `croisiere`
-  ADD CONSTRAINT `port_de_arriver` FOREIGN KEY (`port_dar`) REFERENCES `port` (`id_p`),
-  ADD CONSTRAINT `port_de_depart` FOREIGN KEY (`port_dep`) REFERENCES `port` (`id_p`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Constraints for table `navire`
---
-ALTER TABLE `navire`
-  ADD CONSTRAINT `navire_ibfk_1` FOREIGN KEY (`nb_ch`) REFERENCES `chambre` (`id_ch`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `premier_port` FOREIGN KEY (`port_depart`) REFERENCES `port` (`id_p`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Constraints for table `reservation`
---
-ALTER TABLE `reservation`
-  ADD CONSTRAINT `id_narive` FOREIGN KEY (`id_na`) REFERENCES `navire` (`id_n`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE `rooms`
+  ADD CONSTRAINT `room type` FOREIGN KEY (`room-type`) REFERENCES `category` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

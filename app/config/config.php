@@ -1,10 +1,13 @@
 <?php
-//site name
-define('SITE_NAME', 'Luxury Gems');
+  // DB Params
+  define("DB_HOST", "localhost");
+  define("DB_USER", "root");
+  define("DB_PASS", "");
+  define("DB_NAME", "shipcruise");
 
-//DB Params
-define('DB_HOST', 'localhost');
-define('DB_USER', 'root');
-define('DB_PASS', '');
-define('DB_NAME', 'jewllery store');
-?>
+  // App Root
+  define('APPROOT', dirname(dirname(__FILE__)));
+  // URL Root
+  define('URLROOT', 'http://localhost/ShipCruiseTourMVC');
+  // Site Name
+  define('SITENAME', 'ShipCruiseTour');

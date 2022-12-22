@@ -1,7 +1,4 @@
-Options All -Indexes
 
-RewriteEngine On
-
-RewriteBase /
-
-RewriteRule ^([-a-zA-Z0-9]+)$ index.php?page=$1
+  RewriteEngine on
+  RewriteRule ^$ public/ [L]
+  RewriteRule (.*) public/$1 [L]
