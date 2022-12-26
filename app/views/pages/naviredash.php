@@ -1,10 +1,10 @@
 <?php require APPROOT . '/views/inc/header2.php'; ?>
-<div class="mt-5">
-kk
-</div>
+<?php require APPROOT . '/views/inc/pagination.php'; ?>
+<h1 class="text-light row d-flex justify-content-center">navire</h1>
 <div class="mt-5">
 
 </div>
+<div class="btn btn-primary" >+</div>
 <table class="table table-dark mt-5 ">
   <thead>
     <tr>

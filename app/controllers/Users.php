@@ -5,13 +5,13 @@
     }
 
     public function index(){
-      redirect('welcome');
+      redirect('index');
     }
 
     public function register(){
       // Check if logged in
       if($this->isLoggedIn()){
-        redirect('posts');
+        redirect('login');
       }
 
       // Check if POST
@@ -23,7 +23,6 @@
           'name' => trim($_POST['name']),
           'email' => trim($_POST['email']),
           'password' => trim($_POST['password']),
-          'confirm_password' => trim($_POST['confirm_password']),
           'name_err' => '',
           'email_err' => '',
           'password_err' => '',
@@ -45,14 +44,14 @@
         }
 
         // Validate password
-        if(empty($data['password'])){
+        if(empty($data['passregi'])){
           $password_err = 'Please enter a password.';     
-        } elseif(strlen($data['password']) < 6){
+        } elseif(strlen($data['passregi']) < 6){
           $data['password_err'] = 'Password must have atleast 6 characters.';
         }
 
         // Validate confirm password
-        if(empty($data['confirm_password'])){
+        if(empty($data['confirm_password'])){                         
           $data['confirm_password_err'] = 'Please confirm password.';     
         } else{
             if($data['password'] != $data['confirm_password']){
@@ -71,14 +70,14 @@
           if($this->userModel->register($data)){
             // Redirect to login
             flash('register_success', 'You are now registered and can log in');
-            redirect('users/login');
+            redirect('pages/login');
           } else {
             die('Something went wrong');
           }
            
         } else {
           // Load View
-          $this->view('users/register', $data);
+          $this->view('pages/register', $data);
         }
       } else {
         // IF NOT A POST REQUEST
@@ -96,14 +95,14 @@
         ];
 
         // Load View
-        $this->view('users/register', $data);
+        $this->view('pages/register', $data);
       }
     }
 
     public function login(){
       // Check if logged in
       if($this->isLoggedIn()){
-        redirect('posts');
+        redirect('cruise');
       }
 
       // Check if POST
@@ -149,12 +148,12 @@
           } else {
             $data['password_err'] = 'Password incorrect.';
             // Load View
-            $this->view('users/login', $data);
+            $this->view('pages/login', $data);
           }
-           
+
         } else {
           // Load View
-          $this->view('users/login', $data);
+          $this->view('pages/login', $data);
         }
 
       } else {
@@ -175,24 +174,24 @@
 
     // Create Session With User Info
     public function createUserSession($user){
-      $_SESSION['user_id'] = $user->id;
-      $_SESSION['user_email'] = $user->email; 
+      $_SESSION['id_u'] = $user->id;
+      $_SESSION['user_email'] = $user->email;
       $_SESSION['user_name'] = $user->name;
       redirect('posts');
     }
 
     // Logout & Destroy Session
     public function logout(){
-      unset($_SESSION['user_id']);
-      unset($_SESSION['user_email']);
-      unset($_SESSION['user_name']);
+      unset($_SESSION['id_u']);
+      unset($_SESSION['Email']);
+      unset($_SESSION['Password']);
       session_destroy();
-      redirect('users/login');
+      redirect('pages/login');
     }
 
     // Check Logged In
     public function isLoggedIn(){
-      if(isset($_SESSION['user_id'])){
+      if(isset($_SESSION['id_u'])){
         return true;
       } else {
         return false;

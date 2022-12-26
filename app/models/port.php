@@ -1,12 +1,12 @@
 <?php
-class navire{
+class port{
    
     // Add navire
-  public function addNavire($data)
+  public function addport($data)
   {
     extract($_POST);
     // Prepare Query
-    $this->db->query('INSERT INTO `navire` (title, user_id, body) 
+    $this->db->query('INSERT INTO `port` (id, user_id, body) 
       VALUES (:title, :user_id, :body)');
 
     // Bind Values

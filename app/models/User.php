@@ -9,13 +9,13 @@
     // Add User / Register
     public function register($data){
       // Prepare Query
-      $this->db->query('INSERT INTO users (name, email,password) 
+      $this->db->query('INSERT INTO users (`FName`,`Email`,`Password`) 
       VALUES (:name, :email, :password)');
 
       // Bind Values
-      $this->db->bind(':name', $data['name']);
-      $this->db->bind(':email', $data['email']);
-      $this->db->bind(':password', $data['password']);
+      $this->db->bind(':name', $data['nameregi']);
+      $this->db->bind(':email', $data['emailregi']);
+      $this->db->bind(':password', $data['passregi']);
       
       //Execute
       if($this->db->execute()){
@@ -23,12 +23,12 @@
       } else {
         return false;
       }
-    }
+     }
 
     // Find USer BY Email
-    public function findUserByEmail($email){
+    public function findUserByEmail($emailregi){
       $this->db->query("SELECT * FROM users WHERE email = :email");
-      $this->db->bind(':email', $email);
+      $this->db->bind(':email', $emailregi);
 
       $row = $this->db->single();
 

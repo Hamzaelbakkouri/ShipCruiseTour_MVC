@@ -9,7 +9,7 @@ class Post
   }
 
   // Get All Posts
-  public function getPosts()
+  public function getcruise()
   {
     $this->db->query("SELECT *, 
                         posts.id as postId, 
@@ -25,9 +25,9 @@ class Post
   }
 
   // Get Post By ID
-  public function getPostById($id)
+  public function getcruiseById($id)
   {
-    $this->db->query("SELECT * FROM posts WHERE id = :id");
+    $this->db->query("SELECT * FROM cruise WHERE id_cruise = :id");
 
     $this->db->bind(':id', $id);
 

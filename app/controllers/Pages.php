@@ -1,41 +1,54 @@
 <?php
-  class Pages extends Controller{
-    public function __construct(){
-     
-    }
-
-    // Load Homepage
-    public function index(){
-      // If logged in, redirect to posts
-     
-      // Load homepage/index view
-      $this->view('pages/index');
-    }
-
-    public function about(){
-
-      // Load about view
-      $this->view('pages/about');
-    }
-    public function login(){
-  
-      $this->view('pages/login');
-    }
-    public function loginadmin(){
-  
-      $this->view('pages/loginadmin');
-    }
-    public function dashboard(){
-  
-      $this->view('pages/dashboard');
-    }
-    public function register(){
-  
-      $this->view('pages/register');
-    }
-    public function cruise(){
-  
-      $this->view('pages/cruise');
-    }
+class Pages extends Controller
+{
+  public function __construct()
+  {
   }
-  
+
+  public function index()
+  {
+
+    $this->view('pages/index');
+  }
+
+  public function about()
+  {
+
+    $this->view('pages/about');
+  }
+  public function login()
+  {
+
+    $this->view('pages/login');
+  }
+  public function loginadmin()
+  {
+
+    $this->view('pages/loginadmin');
+  }
+  public function portdash()
+  {
+
+    $this->view('pages/portdash');
+  }
+  public function naviredash()
+  {
+
+    $this->view('pages/naviredash');
+  }
+  public function cruisedash()
+  {
+
+    $this->view('pages/cruisedash');
+  }
+  public function register()
+  {
+
+    $this->view('pages/register');
+  }
+  public function cruise()
+  {
+
+    $this->view('pages/cruise');
+  }
+}

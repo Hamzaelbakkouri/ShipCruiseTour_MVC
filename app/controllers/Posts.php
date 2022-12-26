@@ -1,8 +1,8 @@
 <?php
   class Posts extends Controller{
     public function __construct(){
-      if(!isset($_SESSION['user_id'])){
-        redirect('users/login');
+      if(!isset($_SESSION[''])){
+        redirect('pages/login');
       }
       // Load Models
       $this->postModel = $this->model('Post');
