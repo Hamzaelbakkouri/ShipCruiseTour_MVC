@@ -17,7 +17,7 @@
 
 
           <i class="fa fa-envelope"></i>
-          <input type="text" class="form-control" placeholder="Email address" name="emailadm" require>
+          <input type="text" class="form-control" placeholder="Email address" name="emailadm" required>
 
         </div>
 
@@ -25,7 +25,7 @@
         <div class="form-input">
 
           <i class="fa fa-lock"></i>
-          <input type="password" class="form-control" placeholder="password" name="passadm" require>
+          <input type="password" class="form-control" placeholder="password" name="passadm" required>
 
         </div>
 

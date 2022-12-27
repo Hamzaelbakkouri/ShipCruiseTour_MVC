@@ -20,48 +20,49 @@
         $_POST  = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
         $data = [
-          'name' => trim($_POST['name']),
-          'email' => trim($_POST['email']),
-          'password' => trim($_POST['password']),
-          'name_err' => '',
-          'email_err' => '',
-          'password_err' => '',
-          'confirm_password_err' => ''
+          'name' => trim($_POST['nameregi']),
+          'email' => trim($_POST['emailregi']),
+          'password' => trim($_POST['passregi']),
+          // 'name_err' => '',
+          // 'email_err' => '',
+          // 'password_err' => '',
+          // 'confirm_password_err' => ''
         ];
 
         // Validate email
-        if(empty($data['email'])){
-            $data['email_err'] = 'Please enter an email';
-            // Validate name
-            if(empty($data['name'])){
-              $data['name_err'] = 'Please enter a name';
-            }
-        } else{
-          // Check Email
-          if($this->userModel->findUserByEmail($data['email'])){
-            $data['email_err'] = 'Email is already taken.';
-          }
-        }
+        // if(empty($data['email'])){
+        //     $data['email_err'] = 'Please enter an email';
+        //     // Validate name
+        //     if(empty($data['name'])){
+        //       $data['name_err'] = 'Please enter a name';
+        //     }
+        // } else{
+        //   // Check Email
+        //   if($this->userModel->findUserByEmail($data['email'])){
+        //     $data['email_err'] = 'Email is already taken.';
+        //   }
+        // }
 
         // Validate password
-        if(empty($data['passregi'])){
-          $password_err = 'Please enter a password.';     
-        } elseif(strlen($data['passregi']) < 6){
-          $data['password_err'] = 'Password must have atleast 6 characters.';
-        }
+        // if(empty($data['passregi'])){
+        //   $password_err = 'Please enter a password.';     
+        // } elseif(strlen($data['passregi']) < 6){
+        //   $data['password_err'] = 'Password must have atleast 6 characters.';
+        // }
 
         // Validate confirm password
-        if(empty($data['confirm_password'])){                         
-          $data['confirm_password_err'] = 'Please confirm password.';     
-        } else{
-            if($data['password'] != $data['confirm_password']){
-                $data['confirm_password_err'] = 'Password do not match.';
-            }
-        }
+        // if(empty($data['confirm_password'])){                         
+        //   $data['confirm_password_err'] = 'Please confirm password.';     
+        // } else{
+        //     if($data['password'] != $data['confirm_password']){
+        //         $data['confirm_password_err'] = 'Password do not match.';
+        //     }
+        // }
          
         // Make sure errors are empty
-        if(empty($data['name_err']) && empty($data['email_err']) && empty($data['password_err']) && empty($data['confirm_password_err'])){
+        // if(empty($data['name_err']) && empty($data['email_err']) && empty($data['password_err']) && empty($data['confirm_password_err'])){
           // SUCCESS - Proceed to insert
+
 
           // Hash Password
           $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
@@ -74,30 +75,28 @@
           } else {
             die('Something went wrong');
           }
-           
-        } else {
+        } 
+        else {
           // Load View
-          $this->view('pages/register', $data);
-        }
-      } else {
-        // IF NOT A POST REQUEST
+          $this->view('pages/register');   
+        }{
+          // IF NOT A POST REQUEST
 
         // Init data
         $data = [
           'name' => '',
           'email' => '',
           'password' => '',
-          'confirm_password' => '',
           'name_err' => '',
           'email_err' => '',
           'password_err' => '',
-          'confirm_password_err' => ''
         ];
 
         // Load View
         $this->view('pages/register', $data);
-      }
-    }
+        }
+  }
+    
 
     public function login(){
       // Check if logged in
@@ -111,50 +110,27 @@
         $_POST  = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
         
         $data = [       
-          'email' => trim($_POST['email']),
-          'password' => trim($_POST['password']),        
+          'email' => trim($_POST['emailuse']),
+          'password' => trim($_POST['passuse']),        
           'email_err' => '',
-          'password_err' => '',       
+          'password_err' => '',
         ];
 
-        // Check for email
-        if(empty($data['email'])){
-          $data['email_err'] = 'Please enter email.';
-        }
-
-        // Check for name
-        if(empty($data['name'])){
-          $data['name_err'] = 'Please enter name.';
-        }
-
-        // Check for user
-        if($this->userModel->findUserByEmail($data['email'])){
-          // User Found
-        } else {
-          // No User
-          $data['email_err'] = 'This email is not registered.';
-        }
-
-        // Make sure errors are empty
-        if(empty($data['email_err']) && empty($data['password_err'])){
+        
 
           // Check and set logged in user
           $loggedInUser = $this->userModel->login($data['email'], $data['password']);
 
           if($loggedInUser){
             // User Authenticated!
+            // $this->view('pages/cruise', $data);
             $this->createUserSession($loggedInUser);
-           
-          } else {
-            $data['password_err'] = 'Password incorrect.';
+            
+          }
+          else {
             // Load View
             $this->view('pages/login', $data);
           }
-
-        } else {
-          // Load View
-          $this->view('pages/login', $data);
-        }
 
       } else {
         // If NOT a POST
@@ -175,16 +151,15 @@
     // Create Session With User Info
     public function createUserSession($user){
       $_SESSION['id_u'] = $user->id;
-      $_SESSION['user_email'] = $user->email;
-      $_SESSION['user_name'] = $user->name;
-      redirect('posts');
+      $_SESSION['Email'] = $user->email;
+      $_SESSION['FName'] = $user->name;
+      redirect('pages/cruise');
     }
 
     // Logout & Destroy Session
     public function logout(){
-      unset($_SESSION['id_u']);
-      unset($_SESSION['Email']);
-      unset($_SESSION['Password']);
+      unset($_SESSION['emailuse']);
+      unset($_SESSION['emailuse']);
       session_destroy();
       redirect('pages/login');
     }

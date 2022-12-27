@@ -44,7 +44,7 @@ class Pages extends Controller
   public function register()
   {
 
-    $this->view('pages/register');
+    $this->view('pages/register',);
   }
   public function cruise()
   {

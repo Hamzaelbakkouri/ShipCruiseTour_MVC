@@ -9,13 +9,13 @@
     // Add User / Register
     public function register($data){
       // Prepare Query
-      $this->db->query('INSERT INTO users (`FName`,`Email`,`Password`) 
+      $this->db->query('INSERT INTO users (FName,Email,Password) 
       VALUES (:name, :email, :password)');
 
       // Bind Values
-      $this->db->bind(':name', $data['nameregi']);
-      $this->db->bind(':email', $data['emailregi']);
-      $this->db->bind(':password', $data['passregi']);
+      $this->db->bind(':name', $data['name']);
+      $this->db->bind(':email', $data['email']);
+      $this->db->bind(':password', $data['password']);
       
       //Execute
       if($this->db->execute()){
@@ -23,41 +23,42 @@
       } else {
         return false;
       }
+      
      }
 
     // Find USer BY Email
-    public function findUserByEmail($emailregi){
-      $this->db->query("SELECT * FROM users WHERE email = :email");
-      $this->db->bind(':email', $emailregi);
+    // public function findUserByEmail($emailregi){
+    //   $this->db->query("SELECT * FROM users WHERE Email = :email");
+    //   $this->db->bind(':email', $emailregi);
 
-      $row = $this->db->single();
+    //   $row = $this->db->single();
 
-      //Check Rows
-      if($this->db->rowCount() > 0){
-        return true;
-      } else {
-        return false;
-      }
-    }
-
+    //   //Check Rows
+      // if($this->db->rowCount() > 0){
+      //   return true;
+      // } else {
+      //   return false;
+      // }
+    // }
     // Login / Authenticate User
     public function login($email, $password){
-      $this->db->query("SELECT * FROM users WHERE email = :email");
+      $this->db->query("SELECT * FROM users WHERE `Email` = :email");
       $this->db->bind(':email', $email);
 
       $row = $this->db->single();
       
-      $hashed_password = $row->password;
+      $hashed_password = $row->Password;
       if(password_verify($password, $hashed_password)){
         return $row;
-      } else {
+      } 
+      else {
         return false;
       }
     }
 
     // Find User By ID
     public function getUserById($id){
-      $this->db->query("SELECT * FROM users WHERE id = :id");
+      $this->db->query("SELECT * FROM users WHERE id_u = :id");
       $this->db->bind(':id', $id);
 
       $row = $this->db->single();

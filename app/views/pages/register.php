@@ -2,6 +2,7 @@
 <div class="mt-5">
   k
 </div>
+<form action="<?php echo URLROOT; ?>/users/register" method="post">
 <div class="container mt-5 mb-5">
 
   <div class="row d-flex align-items-center justify-content-center">
@@ -17,14 +18,14 @@
 
 
           <i class="fa fa-envelope"></i>
-          <input type="text" class="form-control" placeholder="Email address" name="emailregi" require>
+          <input type="text" class="form-control" placeholder="Email address" name="emailregi" required>
 
         </div>
 
         <div class="form-input">
 
           <i class="fa fa-user"></i>
-          <input type="text" class="form-control" placeholder="User name" name="nameregi" require>
+          <input type="text" class="form-control" placeholder="User name" name="nameregi" required>
 
         </div>
 
@@ -32,7 +33,7 @@
         <div class="form-input">
 
           <i class="fa fa-lock"></i>
-          <input type="password" class="form-control" placeholder="password" name="passregi" require>
+          <input type="password" class="form-control" placeholder="password" name="passregi" required>
 
         </div>
 
@@ -48,3 +49,4 @@
   </div>
 
 </div>
+</form>
