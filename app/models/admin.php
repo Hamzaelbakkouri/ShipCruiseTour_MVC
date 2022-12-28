@@ -40,8 +40,7 @@ class admin
             return 'error';
     }
 
-    public function deleteCruise($id)
-    {
+    public function deleteCruise($id){
 
         $this->db->query("DELETE from croisiere where id_croisiere = :id");
         $this->db->bind(":id", $id);
