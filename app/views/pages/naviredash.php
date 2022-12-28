@@ -4,7 +4,7 @@
 <div class="mt-5">
 
 </div>
-<div class="btn btn-primary" >+</div>
+<a class="btn btn-primary" href="<?php echo URLROOT; ?> /dashboard/addship">+</a>
 <table class="table table-dark mt-5 ">
   <thead>
     <tr>

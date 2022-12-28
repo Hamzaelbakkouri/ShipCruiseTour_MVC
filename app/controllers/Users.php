@@ -23,45 +23,8 @@
           'name' => trim($_POST['nameregi']),
           'email' => trim($_POST['emailregi']),
           'password' => trim($_POST['passregi']),
-          // 'name_err' => '',
-          // 'email_err' => '',
-          // 'password_err' => '',
-          // 'confirm_password_err' => ''
-        ];
-
-        // Validate email
-        // if(empty($data['email'])){
-        //     $data['email_err'] = 'Please enter an email';
-        //     // Validate name
-        //     if(empty($data['name'])){
-        //       $data['name_err'] = 'Please enter a name';
-        //     }
-        // } else{
-        //   // Check Email
-        //   if($this->userModel->findUserByEmail($data['email'])){
-        //     $data['email_err'] = 'Email is already taken.';
-        //   }
-        // }
-
-        // Validate password
-        // if(empty($data['passregi'])){
-        //   $password_err = 'Please enter a password.';     
-        // } elseif(strlen($data['passregi']) < 6){
-        //   $data['password_err'] = 'Password must have atleast 6 characters.';
-        // }
-
-        // Validate confirm password
-        // if(empty($data['confirm_password'])){                         
-        //   $data['confirm_password_err'] = 'Please confirm password.';     
-        // } else{
-        //     if($data['password'] != $data['confirm_password']){
-        //         $data['confirm_password_err'] = 'Password do not match.';
-        //     }
-        // }
          
-        // Make sure errors are empty
-        // if(empty($data['name_err']) && empty($data['email_err']) && empty($data['password_err']) && empty($data['confirm_password_err'])){
-          // SUCCESS - Proceed to insert
+        ];
 
 
           // Hash Password

@@ -41,14 +41,30 @@ class Pages extends Controller
 
     $this->view('pages/cruisedash');
   }
-  public function register()
+  public function register()   
   {
 
-    $this->view('pages/register',);
+    $this->view('pages/register');
   }
   public function cruise()
   {
 
     $this->view('pages/cruise');
   }
+
+  // dashboards
+
+  public function addcruise($data){
+
+    $this->view('dashboard/addcruise',$data);
+  } 
+  public function addport(){
+
+    $this->view('dashboard/addport');
+  }
+  public function addship(){
+
+    $this->view('dashboard/addship');
+  }
+
 }

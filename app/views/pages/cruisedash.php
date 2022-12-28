@@ -4,7 +4,7 @@
 <div class="mt-5">
 
 </div>
-<div class="btn btn-primary" >+</div>
+<a class="btn btn-primary" href="<?php echo URLROOT; ?> /dashboard/addcruise">+</a>
 <table class="table table-dark mt-5 ">
   <thead>
     <tr>
@@ -22,7 +22,7 @@
       <td>ite</td>
       <td>Otto</td>
       <td>@mdo</td>
-      <td>
+      <td>halzaz</td>
       <a href="" class="link-danger"><i class="bi bi-pencil-square"></i></a>
       <a href="" class="link-danger"><i class="bi bi-trash-fill"></i></a>
       </td>

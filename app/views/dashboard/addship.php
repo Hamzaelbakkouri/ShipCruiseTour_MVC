@@ -1,3 +1,4 @@
+<?php require APPROOT . '/views/inc/headregi.php'; ?>
 <div class="mt-5">
     kk
 </div>
@@ -9,7 +10,7 @@
 
 
                 <div class="card px-5 py-5">
-                    <h2>edit ship</h2>
+                    <h2>add ship</h2>
 
 
                   <div class="form-input">
@@ -42,7 +43,7 @@
                   </div>
 
 
-                  <button class="btn btn-primary mt-4 signup" name="submit_edit_ship">submit</button>
+                  <button class="btn btn-primary mt-4 signup" name="submit_edit_ship">add</button>
 
 
                   

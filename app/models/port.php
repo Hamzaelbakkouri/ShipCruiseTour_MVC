@@ -4,7 +4,6 @@ class port{
     // Add navire
   public function addport($data)
   {
-    extract($_POST);
     // Prepare Query
     $this->db->query('INSERT INTO `port` (id, user_id, body) 
       VALUES (:title, :user_id, :body)');
