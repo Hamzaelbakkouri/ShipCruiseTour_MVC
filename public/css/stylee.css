@@ -7,8 +7,6 @@
   outline: none;
   border: none;
   text-decoration: none;
-  text-transform: capitalize;
-  transition: all 0.2s linear;
 }
 
 html {
@@ -86,6 +84,11 @@ section {
 }
 .header .navbar a:hover {
   color: #29d9d5;
+}
+.header user_name {
+  font-size: 1.7rem;
+  color: #aaa;
+  display: inline-block;
 }
 .header .btn {
   margin-top: 0;

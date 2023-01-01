@@ -5,7 +5,7 @@
 <section class="about" id="about">
     
     <div class="video-container" data-aos="fade-right" data-aos-delay="300">
-        <video src="<?php echo URLROOT; ?>/css/images/about-vid-1.mp4" muted autoplay loop class="video"></video>
+        <video src="<?php echo URLROOT; ?>/images/about-vid-1.mp4" muted autoplay loop class="video"></video>
         <div class="controls">
             <span class="control-btn" data-src="images/about-vid-1.mp4"></span>
             <span class="control-btn" data-src="images/about-vid-2.mp4"></span>

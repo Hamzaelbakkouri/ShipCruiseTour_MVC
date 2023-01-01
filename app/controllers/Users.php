@@ -113,23 +113,24 @@
 
     // Create Session With User Info
     public function createUserSession($user){
-      $_SESSION['id_u'] = $user->id;
-      $_SESSION['Email'] = $user->email;
-      $_SESSION['FName'] = $user->name;
+      $_SESSION['id'] = $user->id_u;
+      $_SESSION['email'] = $user->Email;
+      $_SESSION['name'] = $user->FName;
       redirect('pages/cruise');
     }
 
     // Logout & Destroy Session
     public function logout(){
-      unset($_SESSION['emailuse']);
-      unset($_SESSION['emailuse']);
+      unset($_SESSION['id']);
+      unset($_SESSION['email']);
+      unset($_SESSION['name']);
       session_destroy();
       redirect('pages/login');
     }
 
     // Check Logged In
     public function isLoggedIn(){
-      if(isset($_SESSION['id_u'])){
+      if(isset($_SESSION['id'])){
         return true;
       } else {
         return false;

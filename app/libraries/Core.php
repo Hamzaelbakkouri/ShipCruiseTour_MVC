@@ -48,5 +48,6 @@
           $url = explode('/', $url);
           return $url;
         }
+        return ['pages'];
     }
   }
