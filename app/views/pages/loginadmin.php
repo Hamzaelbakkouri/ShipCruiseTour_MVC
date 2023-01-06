@@ -2,6 +2,7 @@
 <div class="mt-5">
   k
 </div>
+<form action="<?php echo URLROOT; ?>/Adminway/loginController" method="post">
 <div class="container mt-5 mb-5">
 
   <div class="row d-flex align-items-center justify-content-center">
@@ -41,3 +42,4 @@
   </div>
 
 </div>
+</form>

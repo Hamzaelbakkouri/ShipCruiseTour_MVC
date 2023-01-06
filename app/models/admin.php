@@ -2,19 +2,18 @@
 
 class admin
 {
+    protected $db;
     public function __construct(){
         $this->db = new Database;
 
       }
 
     function loginAdmin($email,$password){
-        $this->db->query("SELECT * FROM `admin` WHERE `email`= ? and `password`= ?");
-        $row = $this->db->resultset([$email,$password]);
-        // $row =  $admin->fetch();
+        $this->db->query("SELECT * FROM `admin` WHERE `email`= '$email' and `password`= '$password'");
+        $row = $this->db->resultset();
         if(isset($row)){
         $name = str_replace("@gmail.com","",$email);
-        $_SESSION['admin'] = $name;
-        redirect('cruisedash');
+        redirect('pages/cruisedash');
         }else{
             redirect('loginadmin');
         }

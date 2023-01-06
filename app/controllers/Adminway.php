@@ -1,10 +1,12 @@
 <?php
 class Adminway extends Controller
 {
+  protected $adminModel;
+
 
     public function __construct()
     {
-        $this->userModel = $this->model('admin');
+        $this->adminModel = $this->model('admin');
     }
     public function index()
     {
@@ -14,7 +16,7 @@ class Adminway extends Controller
     
         function loginController(){
             if($this->isLoggedIn()){
-                redirect('cruise');
+                redirect('cruisedash');
               }
         
               // Check if POST
@@ -23,16 +25,13 @@ class Adminway extends Controller
                 $_POST  = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
                 
                 $data = [       
-                  'email' => trim($_POST['emailuse']),
-                  'password' => trim($_POST['passuse']),        
+                  'email' => trim($_POST['emailadm']),
+                  'password' => trim($_POST['passadm']),        
                   'email_err' => '',
                   'password_err' => '',
                 ];
-        
-                
-        
                   // Check and set logged in user
-                  $loggedInUser = $this->userModel->login($data['email'], $data['password']);
+                  $loggedInUser = $this->adminModel->loginAdmin($data['email'], $data['password']);
         
                   if($loggedInUser){
                     // User Authenticated!
@@ -42,7 +41,7 @@ class Adminway extends Controller
                   }
                   else {
                     // Load View
-                    $this->view('pages/cruisedash', $data);
+                    $this->view('pages/index', $data);
                   }
         
               } else {
@@ -74,7 +73,7 @@ class Adminway extends Controller
                 'dated' => trim($_POST['date_depart']),
             ];
 
-            if($this->userModel->addcruise($data)){
+            if($this->adminModel->addcruise($data)){
                 // Redirect to login
                 flash('ading_success');
                 redirect('pages/cruisedash');
@@ -89,22 +88,22 @@ class Adminway extends Controller
             
     }
     public function createadminSession($user){
-        $_SESSION['id'] = $user->id_admin;
-        $_SESSION['email'] = $user->email;
-        redirect('pages/cruisedash');
+        $_SESSION['id_admin'] = $user->id_admin;
+        $_SESSION['email_admin'] = $user->email;
+        // redirect()
       }
   
       // Logout & Destroy Session
       public function logout(){
-        unset($_SESSION['id']);
-        unset($_SESSION['email']);
+        unset($_SESSION['id_admin']);
+        unset($_SESSION['email_admin']);
         session_destroy();
-        redirect('pages/cruise');
+        redirect('pages/loginadmin');
       }
   
       // Check Logged In
       public function isLoggedIn(){
-        if(isset($_SESSION['id'])){
+        if(isset($_SESSION['id_admin'])){
           return true;
         } else {
           return false;

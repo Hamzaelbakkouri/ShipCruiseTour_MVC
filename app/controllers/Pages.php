@@ -48,15 +48,23 @@ class Pages extends Controller
   }
   public function cruise()
   {
-
-    $this->view('pages/cruise');
+    if(isset($_SESSION['name'])&&isset($_SESSION['email'])){
+      $this->view('pages/cruise');
+    }else{
+      
+      $this->view('pages/login');
+    }
   }
 
   // dashboards
 
-  public function addcruise($data){
-
-    $this->view('dashboard/addcruise',$data);
+  public function addcruise(){
+    if(isset($_SESSION['name'])&&isset($_SESSION['email'])){
+      $this->view('dashboard/addcruise');
+    }else{
+      $this->view('pages/loginadmin');
+    }
+    
   } 
   public function addport(){
 

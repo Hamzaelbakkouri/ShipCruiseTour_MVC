@@ -1,6 +1,7 @@
 <?php
 class navire{
-   
+  protected $db;
+
     // Add navire
   public function addNavire($data)
   {
