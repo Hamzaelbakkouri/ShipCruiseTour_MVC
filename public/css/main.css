@@ -263,7 +263,7 @@ label.radio input:checked+span {
   box-shadow: none;
   color: white;
   -webkit-box-shadow: none;
-  -webkit-user-select: none;
+  /* -webkit-user-select: none; */
   transition: none
 }
 
@@ -303,3 +303,6 @@ label.radio input {
 label.radio {
   cursor: pointer
 }
+
+/* card */
+

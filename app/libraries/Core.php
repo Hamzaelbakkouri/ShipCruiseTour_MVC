@@ -39,7 +39,6 @@
       // Call a callback with an array of parameters
       call_user_func_array([$this->currentController, $this->currentMethod], $this->params);
     }
-
     // Construct URL From $_GET['url']
     public function getUrl(){
         if(isset($_GET['url'])){

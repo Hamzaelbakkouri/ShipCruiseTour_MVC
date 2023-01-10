@@ -10,13 +10,13 @@ class Adminway extends Controller
     }
     public function index()
     {
-        redirect('index');
+        redirect('pages/index');
     }
 
     
         function loginController(){
             if($this->isLoggedIn()){
-                redirect('cruisedash');
+                redirect('pages/cruisedash');
               }
         
               // Check if POST
@@ -26,7 +26,7 @@ class Adminway extends Controller
                 
                 $data = [       
                   'email' => trim($_POST['emailadm']),
-                  'password' => trim($_POST['passadm']),        
+                  'password' => trim($_POST['passadm']),
                   'email_err' => '',
                   'password_err' => '',
                 ];
@@ -88,7 +88,7 @@ class Adminway extends Controller
             
     }
     public function createadminSession($user){
-        $_SESSION['id_admin'] = $user->id_admin;
+        $_SESSION['id_admin'] = $user->id_u;
         $_SESSION['email_admin'] = $user->email;
         // redirect()
       }

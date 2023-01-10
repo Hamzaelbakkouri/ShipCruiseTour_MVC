@@ -9,7 +9,7 @@ class admin
       }
 
     function loginAdmin($email,$password){
-        $this->db->query("SELECT * FROM `admin` WHERE `email`= '$email' and `password`= '$password'");
+        $this->db->query("SELECT * FROM `user` WHERE `email`= '$email' and `pass`= '$password' and `role`= 2");
         $row = $this->db->resultset();
         if(isset($row)){
         $name = str_replace("@gmail.com","",$email);

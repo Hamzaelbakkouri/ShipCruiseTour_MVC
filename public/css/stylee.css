@@ -116,7 +116,7 @@ section {
   margin-top: 9rem;
   width: 90%;
   border-radius: 1rem;
-  background: linear-gradient(rgba(17, 17, 17, 0.7), rgba(17, 17, 17, 0.7)), url(../images/home-bg.jpg) no-repeat;
+  background: url(../images/pexels-mathias-reding-12625327.jpg);
   background-size: cover;
   background-position: center;
   display: flex;
@@ -138,13 +138,13 @@ section {
 }
 .home .content h3 {
   font-size: 6vw;
-  color: #fff;
+  color: rgb(7, 7, 7);
 }
 .home .content p {
-  max-width: 60rem;
+  max-width: 75rem;
   margin: 1rem auto;
-  font-size: 1.4rem;
-  color: #aaa;
+  font-size: 1.9rem;
+  color: #ffffff;
   line-height: 2;
 }
 
@@ -257,7 +257,7 @@ section {
   height: 100%;
   width: 100%;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 .destination .box-container .box .content {
   padding: 2rem;
@@ -317,14 +317,14 @@ section {
 
 .gallery .box-container {
   -moz-columns: 3 25rem;
-       columns: 3 25rem;
+  columns: 3 25rem;
   -moz-column-gap: 1.5rem;
-       column-gap: 1.5rem;
+  column-gap: 1rem;
 }
 .gallery .box-container .box {
   margin-bottom: 1rem;
   -moz-column-break-inside: avoid;
-       break-inside: avoid;
+  break-inside: avoid;
 }
 .gallery .box-container .box img {
   width: 100%;
@@ -427,7 +427,7 @@ section {
   height: 100%;
   width: 100%;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 .blogs .box-container .box .content {
   padding: 2rem;
@@ -464,7 +464,8 @@ section {
 }
 
 .banner {
-  background: linear-gradient(rgba(17, 17, 17, 0.7), rgba(17, 17, 17, 0.7)), url(../images/banner-bg.jpg) no-repeat;
+  background: linear-gradient(rgba(17, 17, 17, 0.7), rgba(17, 17, 17, 0.7)),
+    url(../images/banner-bg.jpg) no-repeat;
   background-size: cover;
   background-position: center;
   padding: 3rem 2rem;
@@ -594,11 +595,11 @@ section {
     right: 0;
     background: #222;
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
-            clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
   }
   .header .navbar.active {
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
   }
   .header .navbar a {
     margin: 2rem;
@@ -625,4 +626,4 @@ section {
   .banner .content h3 {
     font-size: 2.7rem;
   }
-}/*# sourceMappingURL=stylee.css.map */
+} /*# sourceMappingURL=stylee.css.map */

@@ -1,12 +1,13 @@
-
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <section class="home" id="home">
 
     <div class="content">
         <span data-aos="fade-up" data-aos-delay="150">follow us</span>
-        <h3 data-aos="fade-up" data-aos-delay="300">shipTour</h3>
-        <p data-aos="fade-up" data-aos-delay="450">Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus quia illum quod perspiciatis harum in possimus? Totam consequuntur officia quia?</p>
-        <a data-aos="fade-up" data-aos-delay="600" href="#" class="btn">book now</a>
+        <h3 data-aos="fade-up" data-aos-delay="300">SHIPTOUR</h3>
+        <p data-aos="fade-up" data-aos-delay="450">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Necessitatibus quia illum quod perspiciatis harum in possimus? Totam consequuntur officia quia?</p>
+        <a data-aos="fade-up" data-aos-delay="600" href="<?php echo URLROOT; ?> /pages/cruise" class=" btn">book
+            now</a>
     </div>
 
 </section>
@@ -43,7 +44,7 @@
 
         <div class="box" data-aos="fade-up" data-aos-delay="300">
             <div class="image">
-                <img src="<?php echo URLROOT; ?>/images/des-2.jpg" alt="">
+                <img src="<?php echo URLROOT; ?>/images/pexels-pixabay-161342.jpg" alt="">
             </div>
             <div class="content">
                 <h3>tours & travel</h3>
@@ -87,7 +88,7 @@
 
         <div class="box" data-aos="fade-up" data-aos-delay="900">
             <div class="image">
-                <img src="<?php echo URLROOT; ?>/css/images/des-6.jpg" alt="">
+                <img src="<?php echo URLROOT; ?>/images/pexels-dmitry-zvolskiy-1544412.jpg" alt="">
             </div>
             <div class="content">
                 <h3>tours & travel</h3>
@@ -126,7 +127,7 @@
 
 <!-- services section starts  -->
 
-<section class="services" id="services">
+<!-- <section class="services" id="services">
 
     <div class="heading">
         <span>our services</span>
@@ -173,7 +174,7 @@
 
     </div>
 
-</section>
+</section> -->
 
 <!-- services section ends -->
 
@@ -185,7 +186,7 @@
         <span>our gallery</span>
         <h1>we record memories</h1>
     </div>
-    
+
     <div class="box-container">
 
         <div class="box" data-aos="zoom-in-up" data-aos-delay="150">
@@ -254,8 +255,10 @@
 
     <div class="content" data-aos="fade-right" data-aos-delay="300">
         <span>testimonials</span>
-        <h3>good news from our clients</h3>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda laudantium corporis fugiat quae unde perspiciatis similique ab modi enim consequatur aperiam cumque distinctio facilis sit, debitis possimus asperiores non harum.</p>
+        <h3>Our guides</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda laudantium corporis fugiat quae unde
+            perspiciatis similique ab modi enim consequatur aperiam cumque distinctio facilis sit, debitis possimus
+            asperiores non harum.</p>
     </div>
 
     <div class="box-container" data-aos="fade-left" data-aos-delay="600">
@@ -266,7 +269,7 @@
                 <img src="<?php echo URLROOT; ?>/images/pic-1.png" alt="">
                 <div class="info">
                     <h3>john deo</h3>
-                    <span>designer</span>
+                    <span>guide</span>
                 </div>
             </div>
         </div>
@@ -276,7 +279,7 @@
                 <img src="<?php echo URLROOT; ?>/images/pic-2.png" alt="">
                 <div class="info">
                     <h3>john deo</h3>
-                    <span>designer</span>
+                    <span>guide</span>
                 </div>
             </div>
         </div>
@@ -286,7 +289,7 @@
                 <img src="<?php echo URLROOT; ?>/images/pic-3.png" alt="">
                 <div class="info">
                     <h3>john deo</h3>
-                    <span>designer</span>
+                    <span>guide</span>
                 </div>
             </div>
         </div>
@@ -312,18 +315,18 @@
 <section class="blogs" id="blogs">
 
     <div class="heading">
-        <span>blogs & posts</span>
-        <h1>we untold stories</h1>
+        <span>SHIPS</span>
+        <h1>our ships</h1>
     </div>
 
     <div class="box-container">
 
         <div class="box" data-aos="fade-up" data-aos-delay="150">
             <div class="image">
-                <img src="<?php echo URLROOT; ?>/images/blog-1.jpg" alt="">
+                <img src="<?php echo URLROOT; ?>/images/safina11.jpg" alt="">
             </div>
             <div class="content">
-                <a href="#" class="link">Life is a journey, not a destination</a>
+                <a href="#" class="link">Lorem ipsum dolor,eveniet hic sapiente impedit repellendus.</a>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur, natus!</p>
                 <div class="icon">
                     <a href="#"><i class="fas fa-clock"></i> 21st may, 2021</a>
@@ -334,10 +337,10 @@
 
         <div class="box" data-aos="fade-up" data-aos-delay="300">
             <div class="image">
-                <img src="<?php echo URLROOT; ?>/images/blog-2.jpg" alt="">
+                <img src="<?php echo URLROOT; ?>/images/safina55.jpg" alt="">
             </div>
             <div class="content">
-                <a href="#" class="link">Life is a journey, not a destination</a>
+                <a href="#" class="link">Lorem ipsum dolor,eveniet hic sapiente impedit repellendus.</a>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur, natus!</p>
                 <div class="icon">
                     <a href="#"><i class="fas fa-clock"></i> 21st may, 2021</a>
@@ -348,10 +351,10 @@
 
         <div class="box" data-aos="fade-up" data-aos-delay="450">
             <div class="image">
-                <img src="<?php echo URLROOT; ?>/images/blog-3.jpg" alt="">
+                <img src="<?php echo URLROOT; ?>/images/safina66.jpg" alt="">
             </div>
             <div class="content">
-                <a href="#" class="link">Life is a journey, not a destination</a>
+                <a href="#" class="link">Lorem ipsum dolor,eveniet hic sapiente impedit repellendus.</a>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur, natus!</p>
                 <div class="icon">
                     <a href="#"><i class="fas fa-clock"></i> 21st may, 2021</a>
@@ -373,11 +376,11 @@
     <div class="content" data-aos="zoom-in-up" data-aos-delay="300">
         <span>start your adventures</span>
         <h3>Let's Explore This World</h3>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum voluptatum praesentium amet quibusdam quam officia suscipit odio.</p>
-        <a href="#book-form" class="btn">book now</a>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum voluptatum praesentium amet quibusdam quam
+            officia suscipit odio.</p>
+        <a href="<?php echo URLROOT; ?> /pages/cruise" class="btn">book now</a>
     </div>
 
 </div>
 
 <?php require APPROOT . '/views/inc/footer.php'; ?>
-
