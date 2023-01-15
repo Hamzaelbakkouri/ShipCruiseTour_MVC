@@ -2,7 +2,7 @@
 <div class="mt-5">
     kk
 </div>
-<form action="<?php echo URLROOT; ?>/Adminway/admin" method="post">
+<form action="<?php echo URLROOT; ?>/Adminway/cruiseController" method="post">
     <div class="container mt-5 mb-5">
 
         <div class="row d-flex align-items-center justify-content-center">

@@ -1,8 +1,11 @@
 <?php
 class Pages extends Controller
 {
+  
   public function __construct()
   {
+    $this->port =$this->model('Port');
+    $this->ship =$this->model('Ship');
   }
 
   public function index()
@@ -26,20 +29,19 @@ class Pages extends Controller
 
     $this->view('pages/loginadmin');
   }
-  public function portdash()
-  {
-
-    $this->view('pages/portdash');
-  }
+  // public function portdash()
+  // {
+  //   $this->view('pages/portdash',$data);
+  // }
   public function naviredash()
   {
 
-    $this->view('pages/naviredash');
+    $this->view('pages/naviredash',$data);
   }
   public function cruisedash()
   {
-
-    $this->view('pages/cruisedash');
+      $this->view('pages/cruisedash',$data);
+    
   }
   public function register()   
   {
@@ -69,17 +71,27 @@ class Pages extends Controller
     
   } 
   public function addport(){
-    if(isset($_SESSION['name'])&&isset($_SESSION['email'])){
-      $this->view('dashboard/addcruise');
-    }else{
-      $this->view('pages/loginadmin');
-    }
-
-    $this->view('dashboard/addport');
+      $this->view('dashboard/addport');
+    
   }
   public function addship(){
 
     $this->view('dashboard/addship');
   }
+
+
+  //functios 
+  
+  public function portdash(){
+    
+        $data=$this->port->getPorts();
+        $this->view('pages/portdash',$data);
+}
+
+  public function shipdash(){
+    
+        $data=$this->ship->getship();
+        $this->view('pages/naviredash',$data);
+}
 
 }

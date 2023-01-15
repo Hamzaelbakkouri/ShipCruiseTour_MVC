@@ -1,58 +1,46 @@
 <?php require APPROOT . '/views/inc/headregi.php'; ?>
 <div class="mt-5">
-    kk
+    k
 </div>
-<div class="container mt-5 mb-5">
+<form action="<?php echo URLROOT; ?>/Navire/addship" method="post">
+    <div class="container mt-5 mb-5">
+        <div class="row d-flex align-items-center justify-content-center">
 
-            <div class="row d-flex align-items-center justify-content-center">
-
-              <div class="col-md-6">
+            <div class="col-md-6">
 
 
                 <div class="card px-5 py-5">
                     <h2>add ship</h2>
 
+                    <div class="form-input">
 
-                  <div class="form-input">
-                    
+                        <i class="fa fa-user"></i>
+                        <input type="text" class="form-control" placeholder="name" name="name_ship" required>
 
-                    <i class="fa fa-envelope"></i>
-                    <input type="text" class="form-control" placeholder="name" name="name" require>
-                    
-                  </div>
+                    </div>
+                    <div class="form-input">
 
-                  <div class="form-input">
+                        <i class="fa fa-user"></i>
+                        <input type="number" class="form-control" placeholder="ROOM" name="num_room" required>
 
-                    <i class="fa fa-user"></i>
-                    <input type="text" class="form-control" placeholder="num" name="num" require>
-                    
-                  </div>
+                    </div>
+                    <div class="form-input">
 
+                        <i class="fa fa-user"></i>
+                        <input type="number" class="form-control" placeholder="NUM PLACE" name="num_place" required>
 
-                  <div class="form-input">
-
-                    <i class="fa fa-lock"></i>
-                    <input type="text" class="form-control" placeholder="num place" name="num place" require>
-                    
-                  </div>
-                  <div class="form-input">
-
-                    <i class="fa fa-lock"></i>
-                    <input type="text" class="form-control" placeholder="port depart" name="port_depart" require>
-                    
-                  </div>
+                    </div>
+                    <button class="btn btn-primary mt-4 signup" name="">add</button>
 
 
-                  <button class="btn btn-primary mt-4 signup" name="submit_edit_ship">add</button>
 
-
-                  
                 </div>
 
 
-                
-              </div>
-              
+
             </div>
-            
-          </div>
+
+        </div>
+    </div>
+
+</form>

@@ -7,6 +7,7 @@ class Adminway extends Controller
     public function __construct()
     {
         $this->adminModel = $this->model('admin');
+        $this->portModel = $this->model('Port');
     }
     public function index()
     {
@@ -61,7 +62,7 @@ class Adminway extends Controller
         }
 
 
-    public function admin(){
+    public function cruiseController(){
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
             $data = [
@@ -87,15 +88,69 @@ class Adminway extends Controller
             }
             
     }
-    public function createadminSession($user){
-        $_SESSION['id_admin'] = $user->id_u;
-        $_SESSION['email_admin'] = $user->email;
+    
+    public function portController(){
+      if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+        // $data = [
+        //     'pays' => trim($_POST['pays']),
+        //     'place' => trim($_POST['place']),
+        // ];
+        if($this->portModel->addport($data)){
+            // Redirect to login
+            flash('ading_success');
+            redirect('pages/cruisedash');
+          } else {
+            die('Something went wrong');
+          }
+          {
+            $this->view('dashboard/addport', $data);
+          }
+        
+        }
+    }
+    
+    public function getports(){
+      $data = $this->portModel->getPorts();
+      $this->view('pages/portdash', $data);
+    }
+    
+    
+    public function shipController(){
+      if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+        $data = [
+            'name' => trim($_POST['name_ship']),
+            'num_room' => trim($_POST['num_room']),
+            'num_place' => trim($_POST['num_place']),
+        ];
+        if($this->adminModel->addship($data)){
+            // Redirect to login
+            flash('ading_success');
+            redirect('pages/cruisedash');
+          } else {
+            die('Something went wrong');
+          }
+          {
+            $this->view('dashboard/addship', $data);
+          }
+        
+        }
+    }
+    
+    
+    public function createadminSession($admin){
+      if($admin)
+      {
+        $_SESSION['id'] = $admin->id_u;
+        $_SESSION['email_adm'] = $admin->email;
         // redirect()
+      }
       }
   
       // Logout & Destroy Session
       public function logout(){
-        unset($_SESSION['id_admin']);
+        unset($_SESSION['id']);
         unset($_SESSION['email_admin']);
         session_destroy();
         redirect('pages/loginadmin');
@@ -103,7 +158,7 @@ class Adminway extends Controller
   
       // Check Logged In
       public function isLoggedIn(){
-        if(isset($_SESSION['id_admin'])){
+        if(isset($_SESSION['id'])){
           return true;
         } else {
           return false;

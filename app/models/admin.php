@@ -68,51 +68,55 @@ class admin
             return 'error';
     }
 
-    public function addPort($data)
+    // public function addPort($data)
+    // {
+    //     $this->db->query("INSERT INTO `port` (pays,nom) values (:p,:place)");
+    //     $this->db->bind(":p", $data['pays']);
+    //     $this->db->bind(":place", $data['place']);
+
+    //     if ($this->db->execute())
+    //         return 'ok';
+    //     else
+    //         return 'error';
+    // }
+
+    // public function deletePort($id)
+    // {
+    //     $this->db->query("DELETE from port where id_p = :id");
+    //     $this->db->bind(":id", $id);
+
+    //     if ($this->db->execute())
+    //         return 'ok';
+    //     else
+    //         return 'error';
+    // }
+    
+    // public function portselect(){
+    //     $data = $this->db->query("SELECT (id_p , nom , pays) FROM port ");
+    //     $data = $this->db->single();
+    //     return $data;
+    // }
+
+    // public function updatePort($data)
+    // {
+    //     $this->db->query("UPDATE port SET nom = :n, pays = :p where id_port = :id");
+    //     $this->db->bind(":id", $data['id']);
+    //     $this->db->bind(":n", $data['nom']);
+    //     $this->db->bind(":p", $data['p']);
+
+    //     if ($this->db->execute())
+    //         return 'ok';
+    //     else
+    //         return 'error';
+    // }
+
+    public function addship($data)
     {
-        $this->db->query("INSERT INTO port(id_port, nom, pays) values (:id, :n, :p)");
-        $this->db->bind(":id", $data['id']);
-        $this->db->bind(":n", $data['nom']);
-        $this->db->bind(":p", $data['p']);
-
-        if ($this->db->execute())
-            return 'ok';
-        else
-            return 'error';
-    }
-
-    public function deletePort($id)
-    {
-        $this->db->query("DELETE from port where id_port = :id");
-        $this->db->bind(":id", $id);
-
-        if ($this->db->execute())
-            return 'ok';
-        else
-            return 'error';
-    }
-
-    public function updatePort($data)
-    {
-        $this->db->query("UPDATE port SET nom = :n, pays = :p where id_port = :id");
-        $this->db->bind(":id", $data['id']);
-        $this->db->bind(":n", $data['nom']);
-        $this->db->bind(":p", $data['p']);
-
-        if ($this->db->execute())
-            return 'ok';
-        else
-            return 'error';
-    }
-
-    public function addShip($data)
-    {
-        $this->db->query("INSERT INTO navire(id_navire, nom, nbrChambre, nbrPlace) values(:id, :n, :nc, :np)");
-        $this->db->bind(":id", $data['id']);
-        $this->db->bind(":n", $data['nom']);
-        $this->db->bind(":nc", $data['nc']);
-        $this->db->bind(":np", $data['np']);
-
+        $this->db->query("INSERT INTO `navire` (nom, nbr_ch, nbr_place) values(:n , :ch_num , :place_num)");
+        $this->db->bind(":n", $data['name']);
+        $this->db->bind(":ch_num", $data['num_room']);
+        $this->db->bind(":place_num", $data['num_place']);
+        
         if ($this->db->execute())
             return 'ok';
         else
@@ -121,7 +125,7 @@ class admin
 
     public function deleteShip($id)
     {
-        $this->db->query("DELETE FROM navire where id_navire = :id");
+        $this->db->query("DELETE FROM `navire` where id_n = :id");
         $this->db->bind(":id", $id);
         if ($this->db->execute())
             return 'ok';
@@ -129,19 +133,19 @@ class admin
             return 'error';
     }
 
-    public function updateShip($data)
-    {
-        $this->db->query("UPDATE navire set nom = :n, nbrChambre = :nc, nbrPlace = :np where id_navire = :id");
-        $this->db->bind(":id", $data['id']);
-        $this->db->bind(":n", $data['nom']);
-        $this->db->bind(":nc", $data['nc']);
-        $this->db->bind(":np", $data['np']);
+    // public function updateShip($data)
+    // {
+    //     $this->db->query("UPDATE navire set nom = :n, nbrChambre = :nc, nbrPlace = :np where id_navire = :id");
+    //     $this->db->bind(":id", $data['id']);
+    //     $this->db->bind(":n", $data['nom']);
+    //     $this->db->bind(":nc", $data['nc']);
+    //     $this->db->bind(":np", $data['np']);
 
-        if ($this->db->execute())
-            return 'ok';
-        else
-            return 'error';
-    }
+    //     if ($this->db->execute())
+    //         return 'ok';
+    //     else
+    //         return 'error';
+    // }
 }
 
 ?>

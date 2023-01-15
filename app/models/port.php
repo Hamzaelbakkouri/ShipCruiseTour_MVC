@@ -1,24 +1,33 @@
 <?php
-class port{
-   
-    // Add navire
-  public function addport($data)
-  {
-    // Prepare Query
-    $this->db->query('INSERT INTO `port` (id, user_id, body) 
-      VALUES (:title, :user_id, :body)');
 
-    // Bind Values
-    $this->db->bind(':title', $data['title']);
-    $this->db->bind(':user_id', $data['user_id']);
-    $this->db->bind(':body', $data['body']);
-
-    //Execute
-    if ($this->db->execute()) {
-      return true;
-    } else {
-      return false;
+class Port extends database{
+    protected $db;
+    function __construct() { 
+        $this->db = new Database;
     }
-  }
+
+    function getPorts(){
+        $this->db->query("SELECT `id_p`, `nom`, `pays` FROM `port`");
+        $data = $this->db->resultset();
+        return $data;
+    }
+
+    function addport($data){
+        $this->db->query("INSERT INTO `port` (pays,nom) values (:p,:place)");
+        $this->db->bind(":p", $data['pays']);
+        $this->db->bind(":place", $data['place']);
+
+        if ($this->db->execute())
+            return 'ok';
+        else
+            return 'error';
+    }
+
+    function deleteport($id_p){
+        $stmt=$this->db->query("DELETE FROM `port` WHERE id_p=:id_p");
+        if($stmt->execute()){
+            return true;
+        };
+    }
+
 }
-?>

@@ -1,8 +1,5 @@
 <?php
-  /* 
-   *  CORE CONTROLLER CLASS
-   *  Loads Models & Views
-   */
+
   class Controller {
     // Lets us load model from controllers
     public function model($model){
@@ -22,5 +19,5 @@
         // No view exists
         die('View does not exist');
       }
-    } 
-  } 
+    }
+  }
