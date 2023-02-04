@@ -6,39 +6,50 @@
       $this->db = new Database;
     }
 
-    // Add User / Register
+    // Regsiter user
     public function register($data){
-      // Prepare Query
-      $this->db->query('INSERT INTO user (Fname,email,pass,role) 
-      VALUES (:name, :email, :password , :role)');
-
-      // Bind Values
-      $this->db->bind(':name', $data['name']);
+      $this->db->query('INSERT INTO users (firstName, lastName, email, password) VALUES(:firstName, :lastName, :email, :password)');
+      // Bind values
+      $this->db->bind(':firstName', $data['firstName']);
+      $this->db->bind(':lastName', $data['lastName']);
       $this->db->bind(':email', $data['email']);
       $this->db->bind(':password', $data['password']);
-      $this->db->bind(':role', '1');
-      
-      
-      //Execute
+
+      // Execute
       if($this->db->execute()){
         return true;
       } else {
         return false;
       }
-      
-     }
-    // Login / Authenticate User
+    }
+
+    // Login User
     public function login($email, $password){
-      $this->db->query("SELECT * FROM `user` WHERE `email` = :email and `role` = 1");
+      $this->db->query('SELECT * FROM users WHERE email = :email');
       $this->db->bind(':email', $email);
 
       $row = $this->db->single();
-      
-      $hashed_password = $row->pass;
+
+      $hashed_password = $row->password;
       if(password_verify($password, $hashed_password)){
         return $row;
+      } else {
+        return false;
       }
-      else {
+    }
+
+    // Find user by email
+    public function findUserByEmail($email){
+      $this->db->query('SELECT * FROM users WHERE email = :email');
+      // Bind value
+      $this->db->bind(':email', $email);
+
+      $row = $this->db->single();
+
+      // Check row
+      if($this->db->rowCount() > 0){
+        return true;
+      } else {
         return false;
       }
     }

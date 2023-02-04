@@ -1,53 +1,86 @@
-<section class="footer">
+<footer class="text-center text-lg-start  text-muted w-100 bg-dark">
 
-    <div class="box-container">
-
-        <div class="box" data-aos="fade-up" data-aos-delay="150">
-            <a href="#" class="logo"> <i class="fas fa-paper-plane"></i>travel </a>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, ad?</p>
-            <div class="share">
-                <a href="#" class="fab fa-facebook-f"></a>
-                <a href="#" class="fab fa-twitter"></a>
-                <a href="#" class="fab fa-instagram"></a>
-                <a href="#" class="fab fa-linkedin"></a>
-            </div>
+  <section class="mt-5">
+    <div class="container text-center text-md-start mt-5">
+      <!-- Grid row -->
+      <div class="row mt-5">
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4 mt-2">
+          <!-- Content -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            ShipCruiseTour
+          </h6>
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Natus laudantium nisi saepe ipsa obcaecati pariatur blanditiis debitis assumenda officiis doloremque.
+          </p>
         </div>
-
-        <div class="box" data-aos="fade-up" data-aos-delay="300">
-            <h3>quick links</h3>
-            <a href="#home" class="links"> <i class="fas fa-arrow-right"></i> home </a>
-            <a href="#about" class="links"> <i class="fas fa-arrow-right"></i> about </a>
-            <a href="#about" class="links"> <i class="fas fa-arrow-right"></i> smthng </a>
-            <a href="#about" class="links"> <i class="fas fa-arrow-right"></i> smthng </a>
+        <!-- Grid column -->
+        <!-- Grid column -->
+        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4 mt-2">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            More
+          </h6>
+          <p>
+            <a href="#!" class="text-reset">News</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Ships</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Our Partners</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Articals</a>
+          </p>
         </div>
-
-        <div class="box" data-aos="fade-up" data-aos-delay="450">
-            <h3>contact info</h3>
-            <p> <i class="fas fa-map"></i> place, place </p>
-            <p> <i class="fas fa-phone"></i> +123-456-7890 </p>
-            <p> <i class="fas fa-envelope"></i> hamza@gmail.com </p>
+        <!-- Grid column -->
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4 mt-2">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            links
+          </h6>
+          <p>
+            <a href="#!" class="text-reset">Home</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">About</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Ports</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Sign Up</a>
+          </p>
         </div>
-
-        <div class="box" data-aos="fade-up" data-aos-delay="600">
-            <h3>newsletter</h3>
-            <p>subscribe for latest updates</p>
-            <form action="">
-                <input type="email" name="" placeholder="enter your email" class="email" id="">
-                <input type="submit" value="subscribe" class="btn">
-            </form>
+        <!-- Grid column -->
+        <!-- Grid column -->
+        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4 mt-2">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+          <p>Morocco, Safi</p>
+          <p>
+            info@example.com
+          </p>
+          <p>06 00 00 00 00</p>
+          <p>06 00 00 00 00</p>
         </div>
-
+        <!-- Grid column -->
+      </div>
+      <!-- Grid row -->
     </div>
+  </section>
+  <!-- Section: Links  -->
 
-</section>
-
-<!-- footer section ends -->
-
-
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-
-
-
+  <!-- Copyright -->
+  <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+    © 2023 Copyright:
+  </div>
+  <!-- Copyright -->
+</footer>
 </body>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/b0306a1f2f.js" crossorigin="anonymous"></script>
 </html>

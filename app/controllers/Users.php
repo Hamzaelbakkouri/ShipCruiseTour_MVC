@@ -1,143 +1,189 @@
 <?php
-  class Users extends Controller{
-    
+  class Users extends Controller {
     protected $userModel;
-    
+
     public function __construct(){
       $this->userModel = $this->model('User');
     }
 
-    public function index(){
-      redirect('index');
-    }
-    
     public function register(){
-      // Check if logged in
-      if($this->isLoggedIn()){
-        redirect('login');
-      }
-
-      // Check if POST
+      // Check for POST
       if($_SERVER['REQUEST_METHOD'] == 'POST'){
-        // Sanitize POST
-        $_POST  = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-        
-        $data = [
-          'name' => trim($_POST['nameregi']),
-          'email' => trim($_POST['emailregi']),
-          'password' => trim($_POST['passregi']),
-         
-        ];
-        
+        // Process form
+  
+        // Sanitize POST data
+        $_POST = filter_input_array(INPUT_POST);
 
-        // Hash Password
-        $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
-        
-        //Execute
-        if($this->userModel->register($data)){
-            // Redirect to login
-            flash('register_success', 'You are now registered and can log in');
-            redirect('pages/login');
+        // Init data
+        $data =[
+          'firstName' => trim($_POST['firstName']),
+          'lastName' => trim($_POST['lastName']),
+          'email' => trim($_POST['email']),
+          'password' => trim($_POST['password']),
+          'firstName_err' => '',
+          'lastName_err' => '',
+          'email_err' => '',
+          'password_err' => '',
+        ];
+
+        // Validate Email
+        if(empty($data['email'])){
+          $data['email_err'] = 'Pleae enter email';
+        } else {
+          // Check email
+          if($this->userModel->findUserByEmail($data['email'])){
+            $data['email_err'] = 'Email is already taken';
+          }
+        }
+
+        // Validate Name
+        if(empty($data['firstName'])){
+          $data['firstName_err'] = 'Pleae enter your first name';
+        }
+
+        if(empty($data['lastName'])){
+          $data['lastName_err'] = 'Pleae enter your last name';
+        }
+
+        // Validate Password
+        if(empty($data['password'])){
+          $data['password_err'] = 'Please enter password';
+        } elseif(strlen($data['password']) < 6){
+          $data['password_err'] = 'Password must be at least 6 characters';
+        }
+
+        // Make sure errors are empty
+        if(empty($data['email_err']) && empty($data['firstName_err']) && empty($data['password_err']) && empty($data['lastName_err'])){
+          // Validated
+          
+          // Hash Password
+          $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+
+          // Register User
+          if($this->userModel->register($data)){
+            redirect('users/login');
           } else {
             die('Something went wrong');
           }
-        } 
-        else {
-          // Load View
-          $this->view('pages/register');   
-        }{
-          // IF NOT A POST REQUEST
 
-        // Init data
-        $data = [
-          'name' => '',
-          'email' => '',
-          'password' => '',
-          'name_err' => '',
-          'email_err' => '',
-          'password_err' => '',
-        ];
-        
-        // Load View
-        $this->view('pages/register', $data);
-      }
-    }
-    
-    
-    public function login(){
-      // Check if logged in
-      if($this->isLoggedIn()){
-        redirect('cruise');
-      }
-      
-      // Check if POST
-      if($_SERVER['REQUEST_METHOD'] == 'POST'){
-        // Sanitize POST
-        $_POST  = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-        
-        $data = [       
-          'email' => trim($_POST['emailuse']),
-          'password' => trim($_POST['passuse']),
-          'email_err' => '',
-          'password_err' => '',
-        ];
-        
-        
-        // Check and set logged in user
-        $loggedInUser = $this->userModel->login($data['email'], $data['password']);
-        // var_dump($data);
-            if($loggedInUser){
-            // User Authenticated!
-            // $this->view('pages/cruise', $data);
-            $this->createUserSession($loggedInUser);
-            
-          }
-          else {
-            // Load View
-            $this->view('pages/login', $data);
-          }
-        
         } else {
-            // If NOT a POST
+          // Load view with errors
+          $this->view('users/register', $data);
+        }
 
-            // Init data
-            $data = [
+      } else {
+        // Init data
+        $data =[
+          'firstName' => '',
+          'lastName' => '',
           'email' => '',
           'password' => '',
+          'confirm_password' => '',
+          'firstName_err' => '',
+          'lastName_err' => '',
           'email_err' => '',
           'password_err' => '',
         ];
-      
-        // Load View
-        $this->view('Users/login');
+
+        // Load view
+        $this->view('users/register', $data);
       }
     }
-    
-    
-    
-    // Create Session With User Info
-      public function createUserSession($user){
-       $_SESSION['id'] = $user->id_u;
-       $_SESSION['email'] = $user->email;
-       $_SESSION['name'] = $user->Fname;
-       redirect('pages/cruise');
-       
-      }
-      // Logout & Destroy Session
-      public function logout(){
-        unset($_SESSION['id']);
-        unset($_SESSION['email']);
-        unset($_SESSION['name']);
-          session_destroy();
-          redirect('pages/login');
-        }
+
+    public function login(){
+      // Check for POST
+      if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        // Process form
+        // Sanitize POST data
+        $_POST = filter_input_array(INPUT_POST);
         
-        // Check Logged In
-        public function isLoggedIn(){
-            if(isset($_SESSION['id'])){
-              return true;
-            } else {
-              return false;
-            }
-          }
+        // Init data
+        $data =[
+          'email' => trim($_POST['email']),
+          'password' => trim($_POST['password']),
+          'email_err' => '',  
+        ];
+
+        // Validate Email
+        if(empty($data['email'])){
+          $data['email_err'] = 'Pleae enter email';
         }
+
+        // Validate Password
+        if(empty($data['password'])){
+          $data['password_err'] = 'Please enter password';
+        }
+
+        // Check for user/email
+        if($this->userModel->findUserByEmail($data['email'])){
+          // User found
+        } else {
+          // User not found
+          $data['email_err'] = 'No user found';
+        }
+
+        // Make sure errors are empty
+        if(empty($data['email_err']) && empty($data['password_err'])){
+          // Validated
+          // Check and set logged in user
+          $loggedInUser = $this->userModel->login($data['email'], $data['password']);
+
+          if($loggedInUser){
+            // Create Session
+            $this->createUserSession($loggedInUser);
+          } else {
+            $data['password_err'] = 'Password incorrect';
+
+            $this->view('users/login', $data);
+          }
+        } else {
+          // Load view with errors
+          $this->view('users/login', $data);
+        }
+
+
+      } else {
+        // Init data
+        $data =[    
+          'email' => '',
+          'password' => '',
+          'email_err' => '',
+          'password_err' => '',        
+        ];
+
+        // Load view
+        $this->view('users/login', $data);
+      }
+    }
+
+    public function createUserSession($user){
+      $_SESSION['idusers'] = $user->idusers;
+      $_SESSION['email'] = $user->email;
+      $_SESSION['firstName'] = $user->firstName;
+      $_SESSION['lastName'] = $user->lastName;
+      $_SESSION['role'] = $user->role;
+      if($user->role == 0){
+        redirect('admins/dashboard');
+      }else{
+        redirect('clients/home');
+      }
+    }
+
+    public function logout(){
+      unset($_SESSION['idusers']);
+      unset($_SESSION['email']);
+      unset($_SESSION['firstName']);
+      unset($_SESSION['lastName']);
+      unset($_SESSION['role']);
+      session_destroy();
+      redirect('users/login');
+    }
+
+    public function isLoggedIn(){
+      if(isset($_SESSION['idusers'])){
+        return true;
+      } else {
+        return false;
+      }
+    }
+  }
