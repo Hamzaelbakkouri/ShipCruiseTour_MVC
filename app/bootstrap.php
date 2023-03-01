@@ -1,12 +1,36 @@
 <?php
-  // Load Config
-  require_once 'config/config.php';
-  // Load Helpers
-  require_once 'helpers/url_helper.php';
-  require_once 'helpers/session_helper.php';
 
-  // Autoload Core Libraries
-  spl_autoload_register(function($className){
-    require_once 'libraries/' . $className . '.php';
-  });
-  
+session_start();
+require_once "config/config.php";
+require_once "views/include/head.php";
+
+
+
+//load config
+
+//  require_once "libraries/DB.php";
+//  require_once "libraries/Core.php";
+//  require_once "libraries/Controller.php";
+spl_autoload_register(function($classname){
+    require_once 'libraries/' . $classname .'.php';
+});
+
+ require_once "helper/redirect.php";
+
+
+
+
+
+$Core = new Core;
+
+
+// $this->view('home');
+
+
+
+
+
+
+
+
+?>

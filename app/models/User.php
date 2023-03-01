@@ -1,56 +1,65 @@
 <?php
-  class User {
-    private $db;
+// require_once '../libraries/DB.php';
 
-    public function __construct(){
-      $this->db = new Database;
-    }
+class user{
 
-    // Regsiter user
-    public function register($data){
-      $this->db->query('INSERT INTO users (firstName, lastName, email, password) VALUES(:firstName, :lastName, :email, :password)');
-      // Bind values
-      $this->db->bind(':firstName', $data['firstName']);
-      $this->db->bind(':lastName', $data['lastName']);
-      $this->db->bind(':email', $data['email']);
-      $this->db->bind(':password', $data['password']);
+private $database;
+public function __construct()
+{
+    $this->database = new DB;
+}
 
-      // Execute
-      if($this->db->execute()){
+//find user by email
+public function getUserByEmail($email)
+{
+    $this->database->query("SELECT * FROM users WHERE Email=:email");
+    $this->database->bind(":email",$email);
+    $this->database->execute(); 
+    $fetch = $this->database->fetch();
+
+    if($this->database->rowCount() > 0){
         return true;
-      } else {
+    }else{
         return false;
-      }
     }
 
-    // Login User
-    public function login($email, $password){
-      $this->db->query('SELECT * FROM users WHERE email = :email');
-      $this->db->bind(':email', $email);
+}
 
-      $row = $this->db->single();
 
-      $hashed_password = $row->password;
-      if(password_verify($password, $hashed_password)){
-        return $row;
-      } else {
-        return false;
-      }
-    }
+public function register($data){
+    $this->database->query('INSERT INTO users (name, email, password)VALUES (:name, :email, :password)');
 
-    // Find user by email
-    public function findUserByEmail($email){
-      $this->db->query('SELECT * FROM users WHERE email = :email');
-      // Bind value
-      $this->db->bind(':email', $email);
+    // Bind values
+    $this->database->bind(':name', $data['name']);
 
-      $row = $this->db->single();
+    $this->database->bind(':email', $data['email']);
+    $this->database->bind(':password', $data['password']);
 
-      // Check row
-      if($this->db->rowCount() > 0){
+    // Execute
+    if($this->database->execute()){
         return true;
-      } else {
+    } else{
         return false;
-      }
     }
-  }
+
+}
+
+
+
+public function login($email, $password){
+    $this->database->query('SELECT * FROM users WHERE email = :email');
+    $this->database->bind(':email', $email);
+
+    $result = $this->database->fetch();
+
+    $hashed_password = $result->password;
+
+    if(password_verify($password, $hashed_password)){
+        return $result;
+    } else{
+        return false;
+    }
+}
+
+
+}

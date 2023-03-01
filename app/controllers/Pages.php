@@ -1,72 +1,128 @@
+
+
 <?php
-  class Pages extends Controller {
-    protected $pagesModel;
 
-    public function __construct(){
-      $this->pagesModel = $this->model('client');
+
+class Pages extends Controller
+{
+    public $User;
+    public $portModel;
+    public $shipModel;
+    public function __construct()
+    {
+        $this->portModel = $this->model('port');
+        $this->shipModel = $this->model('ship');
+        $this->User = $this->model('user');
     }
+
+    public function home()
+    {
+
+        $data = [
+            'title' => 'HomePage'
+        ];
+
+        $this->view('home', $data);
+    }
+
     
-    public function index(){
-     
-      $this->view('pages/index');
-    }
+    public function home2()
+    {
 
-    public function about(){
-
-      $this->view('pages/about');
-    }
-
-    public function reservations(){
-
-      if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $data = [
-          'reservation' => $_POST['reservation'],
+            'title' => 'HomePage2'
         ];
 
-        if($this->pagesModel->addRoom($data)){
-          redirect('admins/dashboard');
-      }else{
-          echo 'error adding ship';
-      }
-
-        if($this->pagesModel->addType($data)){
-            redirect('admins/dashboard');
-        }else{
-            echo 'error adding ship';
-        }
-
-    }else{
-      $product =  $this->pagesModel->displayReservations();
-      $type = $this->pagesModel->getRoomType();
-
-        $data = [
-          'product' => $product,
-          'roomType' => $type
-      ];
-
-
-        $this->view('pages/reservations', $data);
+        $this->view('home2', $data);
     }
 
+    
 
 
-
-
-      $product =  $this->pagesModel->displayReservations();
-      $type = $this->pagesModel->getRoomType();
-
-
-
+    public function booking()
+    {
         $data = [
-            'product' => $product,
-            'roomType' => $type
+            'title' => 'booking'
         ];
-        $this->view('pages/reservations', $data);
-
-
+        $this->view('booking', $data);
     }
-    public function contact(){
 
-      $this->view('pages/contact');
+
+    public function add()
+    {
+        $port = $this->portModel->getport();
+        $ship = $this->shipModel->getship();
+        $data = [
+            'title' => 'add',
+            'port' => $port,
+            'ship'=>$ship
+        ];
+        $this->view('add', $data);
     }
-  }
+
+
+    public function Admin()
+    {
+        $data = [
+            'title' => 'Admin'
+        ];
+        $this->view('Admin', $data);
+    }
+
+    public function ticket()
+    {
+        $data = [
+            'title' => 'ticket'
+        ];
+        $this->view('ticket', $data);
+    }
+
+
+    public function edite()
+    {
+        $data = [
+            'title' => 'edite'
+        ];
+        $this->view('edite', $data);
+    }
+
+
+    public function Contact()
+    {
+        $data = [
+            'title' => 'Contact'
+        ];
+        $this->view('Contact', $data);
+    }
+
+
+    public function login()
+    {
+        $data = [
+            'title' => 'login'
+        ];
+        $this->view('login', $data);
+    }
+
+    public function register()
+    {
+        $data = [
+            'title' => 'register'
+        ];
+        $this->view('register', $data);
+    }
+    public function book_now()
+    {
+        $data = [
+            'title' => 'book_now'
+        ];
+        $this->view('book_now', $data);
+    }
+
+
+
+    public function index()
+    {
+        echo 'hey';
+    }
+}
