@@ -19,7 +19,6 @@ class ship{
      
          }
 
-
     public function insertship($name , $rooms ,$places){
      
         $sql = $this->db->query("INSERT INTO 'ship'(name, rooms_number, places_number) VALUES (:name, :rooms, :places) ");
@@ -34,9 +33,8 @@ class ship{
          } else {
              return false;
          }
-    
     }
-
+    
     public function deleteship ($id){
         $sql ="DELETE FROM ship WHERE id = :id";
        $stmt= $this->db->query($sql);

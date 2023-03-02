@@ -4,7 +4,7 @@ Options -Multiviews
 
 RewriteEngine On
 
-RewriteBase /BOOKING_CRUISE/public
+RewriteBase /ShipCruiseTourMVC/public
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 

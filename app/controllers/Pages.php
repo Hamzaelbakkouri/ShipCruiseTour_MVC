@@ -17,23 +17,13 @@ class Pages extends Controller
 
     public function home()
     {
-
-        $data = [
-            'title' => 'HomePage'
-        ];
-
-        $this->view('home', $data);
+        $this->view('home');
     }
 
     
     public function home2()
     {
-
-        $data = [
-            'title' => 'HomePage2'
-        ];
-
-        $this->view('home2', $data);
+        $this->view('home2');
     }
 
     
@@ -41,10 +31,7 @@ class Pages extends Controller
 
     public function booking()
     {
-        $data = [
-            'title' => 'booking'
-        ];
-        $this->view('booking', $data);
+        $this->view('booking');
     }
 
 
@@ -53,7 +40,6 @@ class Pages extends Controller
         $port = $this->portModel->getport();
         $ship = $this->shipModel->getship();
         $data = [
-            'title' => 'add',
             'port' => $port,
             'ship'=>$ship
         ];
@@ -63,60 +49,33 @@ class Pages extends Controller
 
     public function Admin()
     {
-        $data = [
-            'title' => 'Admin'
-        ];
-        $this->view('Admin', $data);
+        $this->view('Admin');
     }
 
     public function ticket()
     {
-        $data = [
-            'title' => 'ticket'
-        ];
-        $this->view('ticket', $data);
+        $this->view('ticket');
     }
 
 
     public function edite()
     {
-        $data = [
-            'title' => 'edite'
-        ];
-        $this->view('edite', $data);
-    }
-
-
-    public function Contact()
-    {
-        $data = [
-            'title' => 'Contact'
-        ];
-        $this->view('Contact', $data);
+        $this->view('edite');
     }
 
 
     public function login()
     {
-        $data = [
-            'title' => 'login'
-        ];
-        $this->view('login', $data);
+        $this->view('login');
     }
 
     public function register()
     {
-        $data = [
-            'title' => 'register'
-        ];
-        $this->view('register', $data);
+        $this->view('register');
     }
     public function book_now()
     {
-        $data = [
-            'title' => 'book_now'
-        ];
-        $this->view('book_now', $data);
+        $this->view('book_now');
     }
 
 

@@ -1,32 +1,39 @@
-<!-- <span for="name">Name<sup>*</sup></span>
-                        <input type="text" name="userName" value="<?= $data['name'] ?>" class="form-control form-control-lg <?= (!empty($data['name_err']) ? 'is-invalid' : '') ?>">
-                        <span class="invalid-feedback"><?= $data['name_err'] ?></span> -->
+<?php require APPROOT . '/views/include/navbar.php'; ?>
 
-
-<form action="<?php echo URLROOT; ?>/usersController/register" method="POST">
-    <div class="shadow-xl p-10 bg-white max-w-xl mx-auto mt-8 rounded">
-        <h1 class="text-4xl font-black mb-4">signUp</h1>
-        <div class="mb-4 relative">
-            <span for="name">Name<sup>*</sup></span>
-            <input value="<?= $data['name'] ?>" <?= (!empty($data['name_err']) ? 'border-red-500' : '') ?> class="input border border-gray-400 appearance-none rounded w-full px-3 py-3 pt-5 pb-2 focus focus:border-indigo-600 focus:outline-none active:outline-none active:border-indigo-600" name="name" type="text" autofocus>
-            <span class="text-red-500"><?= $data['name_err'] ?></span>
+<section class="bg-gray-50 dark:bg-gray-900">
+    <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+        <div class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+            <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+                <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+                    Create and account
+                </h1>
+                <form class="space-y-4 md:space-y-6" action="<?= URLROOT; ?>/usersController/register" method="post">
+                    <div>
+                        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your Name</label>
+                        <input type="text"  name="name" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@company.com" required="">
+                        <span class="text-red-700"><? echo (!empty($data['name_err']) ? 'border-red-500' : '') ?></span>
+                    </div>
+                    <div>
+                        <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
+                        <input type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@company.com" required="">
+                        <span class="text-red-700"><? echo (!empty($data['email_err']) ? 'border-red-500' : '') ?></span>
+                    </div>
+                    <div>
+                        <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
+                        <input type="password" name="password" id="password" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required="">
+                        <span class="text-red-700"><? echo (!empty($data['password_err']) ? 'border-red-500' : '') ?></span>
+                    </div>
+                    <div>
+                        <label for="confirm-password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Confirm password</label>
+                        <input type="confirm-password" name="confirm-password" id="confirm-password" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required="">
+                        <span class="text-red-700"><? echo (!empty($data['confirm-password_err']) ? 'border-red-500' : '') ?></span>
+                    </div>
+                    <button type="submit" class="w-full text-white hover:bg-blue-700 bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Create an account</button>
+                    <p class="text-sm font-light text-gray-500 dark:text-gray-400">
+                        Already have an account? <a href="<?=URLROOT;?>usersController/login" class="font-medium text-primary-600 hover:underline dark:text-primary-500">Login here</a>
+                    </p>
+                </form>
+            </div>
         </div>
-        <div class="mb-4 relative">
-            <span for="email">Email<sup>*</sup></span>
-            <input value="<?= $data['email'] ?>" <?= (!empty($data['email_err']) ? 'border-red-500' : '') ?> class="input border border-gray-400 appearance-none rounded w-full px-3 py-3 pt-5 pb-2 focus focus:border-indigo-600 focus:outline-none active:outline-none active:border-indigo-600" name="email" type="text" autofocus>
-            <span class="text-red-500"><?= $data['email_err'] ?></span>
-            
-        </div>
-        <div class="mb-4 relative">
-            <span for="password">Password<sup>*</sup></span>
-            <input value="<?= $data['password'] ?>" <?= (!empty($data['password_err']) ? 'border-red-500' : '') ?> class="input border border-gray-400 appearance-none rounded w-full px-3 py-3 pt-5 pb-2 focus focus:border-indigo-600 focus:outline-none active:outline-none active:border-indigo-600" name="password" type="password" autofocus>
-            <span class="text-red-500"><?= $data['password_err'] ?></span>
-        </div>
-        <div class="mb-4 relative">
-            <span for="password">Confirm Password<sup>*</sup></span>
-            <input value="<?= $data['confirm-password'] ?>" <?= (!empty($data['confirm-password_err']) ? 'border-red-500' : '') ?> class="input border border-gray-400 appearance-none rounded w-full px-3 py-3 pt-5 pb-2 focus focus:border-indigo-600 focus:outline-none active:outline-none active:border-indigo-600" name="confirm-password" type="password" autofocus>
-            <span class="text-red-500"><?= $data['confirm-password_err'] ?></span>
-        </div>
-        <button class="bg-indigo-600 hover:bg-blue-dark text-white font-bold py-3 px-6 rounded" type="submit">Submit</button>
     </div>
-</form>
+</section>

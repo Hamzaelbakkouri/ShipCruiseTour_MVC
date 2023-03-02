@@ -1,67 +1,376 @@
-<?php
-    
-    require_once "include/navbar.php";
+<?php require APPROOT . '/views/include/navbar.php'; ?>
+<section class="home" id="home">
 
-    ?>
-<video autoplay muted loop style="width: 100%;">
-    <source src="<?php echo URLROOT;?>/public/img/cover.mp4" type="video/mp4" alt ="ty"/>
-</video>
+    <div class="content">
+        <span data-aos="fade-up" data-aos-delay="150">follow us</span>
+        <h3 data-aos="fade-up" data-aos-delay="300">SHIPTOUR</h3>
+        <p data-aos="fade-up" data-aos-delay="450">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Necessitatibus quia illum quod perspiciatis harum in possimus? Totam consequuntur officia quia?</p>
+        <a data-aos="fade-up" data-aos-delay="600" href="<?php echo URLROOT; ?> /pages/cruise" class=" btn">book
+            now</a>
+    </div>
 
+</section>
 
-<section class="book" id="book">
+<section class="destination" id="destination">
 
+    <div class="heading">
+        <span>our destination</span>
+        <h1>make yours destination</h1>
+    </div>
 
-    <section class="bg-white dark:bg-gray-900">
-    <div class="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
-        <div class="mr-auto place-self-center lg:col-span-7">
-            <h1 class="max-w-2xl mb-4 text-4xl font-extrabold leading-none tracking-tight md:text-5xl xl:text-6xl dark:text-white">Best Cruise Experiance</h1>
-            <p class="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">To Feel Confortobal Is Our Responsebility.</p>
-            <a href="<?=URLROOT?>cruiseController/booking" class="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900">
-                Get Your Tiket 
-                <svg class="w-5 h-5 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-                
-            </a>
-            <a href="register" class="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
-                Register Now
-            </a> 
+    <div class="box-container">
+
+        <div class="box" data-aos="fade-up" data-aos-delay="150">
+            <div class="image">
+                <img src="<?php echo URLROOT; ?>/images/des-1.jpg" alt="">
+            </div>
+            <div class="content">
+                <h3>tours & travel</h3>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing.</p>
+                <a href="#">read more <i class="fas fa-angle-right"></i></a>
+            </div>
         </div>
-        <div class="hidden lg:mt-0 lg:col-span-5 lg:flex">
-            <img src="<?php echo IMAGE;?>home_ship.png" alt="ship">
-        </div>                
+
+        <div class="box" data-aos="fade-up" data-aos-delay="300">
+            <div class="image">
+                <img src="<?php echo URLROOT; ?>/images/pexels-pixabay-161342.jpg" alt="">
+            </div>
+            <div class="content">
+                <h3>tours & travel</h3>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing.</p>
+                <a href="#">read more <i class="fas fa-angle-right"></i></a>
+            </div>
+        </div>
+
+        <div class="box" data-aos="fade-up" data-aos-delay="450">
+            <div class="image">
+                <img src="<?php echo URLROOT; ?>/images/des-3.jpg" alt="">
+            </div>
+            <div class="content">
+                <h3>tours & travel</h3>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing.</p>
+                <a href="#">read more <i class="fas fa-angle-right"></i></a>
+            </div>
+        </div>
+
+        <div class="box" data-aos="fade-up" data-aos-delay="600">
+            <div class="image">
+                <img src="<?php echo URLROOT; ?>/images/des-4.jpg" alt="">
+            </div>
+            <div class="content">
+                <h3>tours & travel</h3>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing.</p>
+                <a href="#">read more <i class="fas fa-angle-right"></i></a>
+            </div>
+        </div>
+
+        <div class="box" data-aos="fade-up" data-aos-delay="750">
+            <div class="image">
+                <img src="<?php echo URLROOT; ?>/images/des-5.jpg" alt="">
+            </div>
+            <div class="content">
+                <h3>tours & travel</h3>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing.</p>
+                <a href="#">read more <i class="fas fa-angle-right"></i></a>
+            </div>
+        </div>
+
+        <div class="box" data-aos="fade-up" data-aos-delay="900">
+            <div class="image">
+                <img src="<?php echo URLROOT; ?>/images/pexels-dmitry-zvolskiy-1544412.jpg" alt="">
+            </div>
+            <div class="content">
+                <h3>tours & travel</h3>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing.</p>
+                <a href="#">read more <i class="fas fa-angle-right"></i></a>
+            </div>
+        </div>
+
+        <div class="box" data-aos="fade-up" data-aos-delay="1150">
+            <div class="image">
+                <img src="<?php echo URLROOT; ?>/images/des-7.jpg" alt="">
+            </div>
+            <div class="content">
+                <h3>tours & travel</h3>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing.</p>
+                <a href="#">read more <i class="fas fa-angle-right"></i></a>
+            </div>
+        </div>
+
+        <div class="box" data-aos="fade-up" data-aos-delay="1300">
+            <div class="image">
+                <img src="<?php echo URLROOT; ?>/images/des-8.jpg" alt="">
+            </div>
+            <div class="content">
+                <h3>tours & travel</h3>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing.</p>
+                <a href="#">read more <i class="fas fa-angle-right"></i></a>
+            </div>
+        </div>
+
     </div>
+
 </section>
 
-</section>
+<!-- destination section ends -->
 
+<!-- services section starts  -->
 
+<!-- <section class="services" id="services">
 
-<!-- component -->
-
-
-<div style="width: 100%;" class="sliderAx h-auto">
-      <div id="slider-1" class="container mx-auto">
-        <div class="bg-cover bg-center  h-auto text-white py-24 px-10 object-fill" style="background-image: url(https://images.unsplash.com/photo-1544427920-c49ccfb85579?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1422&q=80)">
-       <div class="md:w-1/2">
-       <p class="font-bold text-sm uppercase">Contact</p>
-        <p class="text-3xl font-bold">Hello Costumers</p>
-        <p class="text-2xl mb-10 leading-none">Enjoy Your Cruise With Us</p>
-        <a href="Contact" class="bg-purple-800 py-4 px-8 text-white font-bold uppercase text-xs rounded hover:bg-gray-200 hover:text-gray-800">Contact us</a>
-        </div>  
-    </div> <!-- container -->
-      <br>
-      </div>
-
-      <div id="slider-2" class="container mx-auto">
-        <div class="bg-cover bg-top  h-auto text-white py-24 px-10 object-fill" style="background-image: url(https://images.unsplash.com/photo-1544144433-d50aff500b91?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80)">
-       
-  <p class="font-bold text-sm uppercase">Contact</p>
-        <p class="text-3xl font-bold">Hello Costumers</p>
-        <p class="text-2xl mb-10 leading-none">Enjoy Your Cruise With Us</p>
-        <a href="Contact" class="bg-purple-800 py-4 px-8 text-white font-bold uppercase text-xs rounded hover:bg-gray-200 hover:text-gray-800">Contact us</a>
-         
-    </div> <!-- container -->
-      <br>
-      </div>
+    <div class="heading">
+        <span>our services</span>
+        <h1>countless expericences</h1>
     </div>
 
-    <?php require_once "include/footer.php"; ?>
+    <div class="box-container">
+
+        <div class="box" data-aos="zoom-in-up" data-aos-delay="150">
+            <i class="fas fa-globe"></i>
+            <h3>worldwide</h3>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam, cumque.</p>
+        </div>
+
+        <div class="box" data-aos="zoom-in-up" data-aos-delay="300">
+            <i class="fas fa-hiking"></i>
+            <h3>adventures</h3>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam, cumque.</p>
+        </div>
+
+        <div class="box" data-aos="zoom-in-up" data-aos-delay="450">
+            <i class="fas fa-utensils"></i>
+            <h3>food & drinks</h3>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam, cumque.</p>
+        </div>
+
+        <div class="box" data-aos="zoom-in-up" data-aos-delay="600">
+            <i class="fas fa-hotel"></i>
+            <h3>affordable hotels</h3>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam, cumque.</p>
+        </div>
+
+        <div class="box" data-aos="zoom-in-up" data-aos-delay="750">
+            <i class="fas fa-wallet"></i>
+            <h3>affordable price</h3>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam, cumque.</p>
+        </div>
+
+        <div class="box" data-aos="zoom-in-up" data-aos-delay="900">
+            <i class="fas fa-headset"></i>
+            <h3>24/7 support</h3>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam, cumque.</p>
+        </div>
+
+    </div>
+
+</section> -->
+
+<!-- services section ends -->
+
+<!-- gallery section starts  -->
+
+<section class="gallery" id="gallery">
+
+    <div class="heading">
+        <span>our gallery</span>
+        <h1>we record memories</h1>
+    </div>
+
+    <div class="box-container">
+
+        <div class="box" data-aos="zoom-in-up" data-aos-delay="150">
+            <img src="<?php echo URLROOT; ?>/images/gallery-img-1.jpg" alt="">
+            <span>travel spot</span>
+            <h3>iceland</h3>
+        </div>
+
+        <div class="box" data-aos="zoom-in-up" data-aos-delay="300">
+            <img src="<?php echo URLROOT; ?>/images/gallery-img-2.jpg" alt="">
+            <span>travel spot</span>
+            <h3>greenland</h3>
+        </div>
+
+        <div class="box" data-aos="zoom-in-up" data-aos-delay="450">
+            <img src="<?php echo URLROOT; ?>/images/gallery-img-3.jpg" alt="">
+            <span>travel spot</span>
+            <h3>alaska</h3>
+        </div>
+
+        <div class="box" data-aos="zoom-in-up" data-aos-delay="150">
+            <img src="<?php echo URLROOT; ?>/images/gallery-img-4.jpg" alt="">
+            <span>travel spot</span>
+            <h3>thailand</h3>
+        </div>
+
+        <div class="box" data-aos="zoom-in-up" data-aos-delay="300">
+            <img src="<?php echo URLROOT; ?>/images/gallery-img-5.jpg" alt="">
+            <span>travel spot</span>
+            <h3>brazil</h3>
+        </div>
+
+        <div class="box" data-aos="zoom-in-up" data-aos-delay="450">
+            <img src="<?php echo URLROOT; ?>/images/gallery-img-6.jpg" alt="">
+            <span>travel spot</span>
+            <h3>maldive</h3>
+        </div>
+
+        <div class="box" data-aos="zoom-in-up" data-aos-delay="150">
+            <img src="<?php echo URLROOT; ?>/images/gallery-img-7.jpg" alt="">
+            <span>travel spot</span>
+            <h3>iceland</h3>
+        </div>
+
+        <div class="box" data-aos="zoom-in-up" data-aos-delay="300">
+            <img src="<?php echo URLROOT; ?>/images/gallery-img-8.jpg" alt="">
+            <span>travel spot</span>
+            <h3>alaska</h3>
+        </div>
+
+        <div class="box" data-aos="zoom-in-up" data-aos-delay="450">
+            <img src="<?php echo URLROOT; ?>/images/gallery-img-9.jpg" alt="">
+            <span>travel spot</span>
+            <h3>maldive</h3>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- gallery section ends -->
+
+<!-- review section starts  -->
+
+<section class="review">
+
+    <div class="content" data-aos="fade-right" data-aos-delay="300">
+        <span>testimonials</span>
+        <h3>Our guides</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda laudantium corporis fugiat quae unde
+            perspiciatis similique ab modi enim consequatur aperiam cumque distinctio facilis sit, debitis possimus
+            asperiores non harum.</p>
+    </div>
+
+    <div class="box-container" data-aos="fade-left" data-aos-delay="600">
+
+        <div class="box">
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quia, ratione.</p>
+            <div class="user">
+                <img src="<?php echo URLROOT; ?>/images/pic-1.png" alt="">
+                <div class="info">
+                    <h3>john deo</h3>
+                    <span>guide</span>
+                </div>
+            </div>
+        </div>
+        <div class="box">
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quia, ratione.</p>
+            <div class="user">
+                <img src="<?php echo URLROOT; ?>/images/pic-2.png" alt="">
+                <div class="info">
+                    <h3>john deo</h3>
+                    <span>guide</span>
+                </div>
+            </div>
+        </div>
+        <div class="box">
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quia, ratione.</p>
+            <div class="user">
+                <img src="<?php echo URLROOT; ?>/images/pic-3.png" alt="">
+                <div class="info">
+                    <h3>john deo</h3>
+                    <span>guide</span>
+                </div>
+            </div>
+        </div>
+        <div class="box">
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quia, ratione.</p>
+            <div class="user">
+                <img src="<?php echo URLROOT; ?>/images/pic-4.png" alt="">
+                <div class="info">
+                    <h3>john deo</h3>
+                    <span>designer</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- review section ends -->
+
+<!-- blogs section starts  -->
+
+<section class="blogs" id="blogs">
+
+    <div class="heading">
+        <span>SHIPS</span>
+        <h1>our ships</h1>
+    </div>
+
+    <div class="box-container">
+
+        <div class="box" data-aos="fade-up" data-aos-delay="150">
+            <div class="image">
+                <img src="<?php echo URLROOT; ?>/images/safina11.jpg" alt="">
+            </div>
+            <div class="content">
+                <a href="#" class="link">Lorem ipsum dolor,eveniet hic sapiente impedit repellendus.</a>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur, natus!</p>
+                <div class="icon">
+                    <a href="#"><i class="fas fa-clock"></i> 21st may, 2021</a>
+                    <a href="#"><i class="fas fa-user"></i> by admin</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="box" data-aos="fade-up" data-aos-delay="300">
+            <div class="image">
+                <img src="<?php echo URLROOT; ?>/images/safina55.jpg" alt="">
+            </div>
+            <div class="content">
+                <a href="#" class="link">Lorem ipsum dolor,eveniet hic sapiente impedit repellendus.</a>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur, natus!</p>
+                <div class="icon">
+                    <a href="#"><i class="fas fa-clock"></i> 21st may, 2021</a>
+                    <a href="#"><i class="fas fa-user"></i> by admin</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="box" data-aos="fade-up" data-aos-delay="450">
+            <div class="image">
+                <img src="<?php echo URLROOT; ?>/images/safina66.jpg" alt="">
+            </div>
+            <div class="content">
+                <a href="#" class="link">Lorem ipsum dolor,eveniet hic sapiente impedit repellendus.</a>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur, natus!</p>
+                <div class="icon">
+                    <a href="#"><i class="fas fa-clock"></i> 21st may, 2021</a>
+                    <a href="#"><i class="fas fa-user"></i> by admin</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- blogs section ends -->
+
+<!-- banner section starts  -->
+
+<div class="banner">
+
+    <div class="content" data-aos="zoom-in-up" data-aos-delay="300">
+        <span>start your adventures</span>
+        <h3>Let's Explore This World</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum voluptatum praesentium amet quibusdam quam
+            officia suscipit odio.</p>
+        <a href="<?php echo URLROOT; ?> /pages/cruise" class="btn">book now</a>
+    </div>
+
+</div>
+
+<?php require APPROOT . '/views/inc/footer.php'; ?>

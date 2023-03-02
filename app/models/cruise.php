@@ -61,13 +61,11 @@ class Cruise{
 
       public function search($sqlEnd)
     {
-
         $sql = "SELECT * FROM cruise" . $sqlEnd;
         $this->db->query($sql);
         $this->db->execute();
         $this->db->fetchAll();
         return $this->db->fetchAll();
     }
-
 
 }

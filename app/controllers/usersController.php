@@ -58,7 +58,7 @@ class usersController extends Controller
 
             // load the register
             $this->view('users/login',$data);
-        }*/ 
+        }*/
 
     public function login()
     {
@@ -72,29 +72,22 @@ class usersController extends Controller
                 'password_err' => ''
             ];
 
-            if(!$this->userModel->getUserByEmail($data['email'])){
+            if (!$this->userModel->getUserByEmail($data['email'])) {
                 $data['email_err'] = 'User not exist';
             }
-            if(empty($data['email'])) $data['email_err'] = 'Please enter email';
-            if(empty($data['password'])) $data['password_err'] = 'Please enter password';
+            if (empty($data['email'])) $data['email_err'] = 'Please enter email';
+            if (empty($data['password'])) $data['password_err'] = 'Please enter password';
 
-            if(empty($data['email_err']) && empty($data['password_err'])){
-                $loggedInUser = $this->userModel->login($data['email'],$data['password']);
-                if($loggedInUser){
-                    // set The sessions
-                  
-                    $this->createUserSession($loggedInUser);
-                    redirect('pages/home');
-                }else {
-                    // password incorrect
-                    $data['password_err'] = 'Password Incorrect';
-                    $this->view('login', $data);
-                }
-            }else{
-                // user register failed
+            $loggedInUser = $this->userModel->login($data['email'], $data['password']);
+            if ($loggedInUser) {
+
+                $this->createUserSession($loggedInUser);
+                redirect('pages/home');
+            } else {
+                // password incorrect
+                $data['password_err'] = 'Password Incorrect';
                 $this->view('login', $data);
             }
-
         }
     }
 
@@ -108,14 +101,12 @@ class usersController extends Controller
 
     public function logOut()
     {
-
         $_SESSION['Id'] = null;
         $_SESSION['email'] = null;
         $_SESSION['name'] = null;
         $_SESSION['role'] = null;
 
         session_destroy();
-
         $this->view('login');
     }
 
@@ -125,10 +116,7 @@ class usersController extends Controller
 
     public function register()
     {
-
-
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
 
             $_POST = filter_input_array(INPUT_POST);
 
@@ -164,7 +152,7 @@ class usersController extends Controller
                     $data['confirm-password_err'] = 'password do not match';
                 }
             }
-            if($this->userModel->getUserByEmail($data['email'])){
+            if ($this->userModel->getUserByEmail($data['email'])) {
                 $data['email_err'] = 'Email exist';
             }
 
@@ -185,7 +173,7 @@ class usersController extends Controller
                 }
             } else {
                 //load view with errors
-                $this->view('register', $data);
+                $this->view('register');
             }
         } else {
             $data = [

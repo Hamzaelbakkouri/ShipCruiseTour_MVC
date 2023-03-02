@@ -18,7 +18,7 @@ define('JS','http://localhost/ShipCruiseTourMVC/App/views/include/js/main.js');
 define('IMAGE','http://localhost/ShipCruiseTourMVC/public/img/');
 
 //site name
-define('SITENAME', 'booking_cruise');
+define('SITENAME', 'ShipCruiseTourMVC');
 
 
 
