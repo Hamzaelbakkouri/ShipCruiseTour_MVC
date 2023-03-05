@@ -11,22 +11,30 @@ class port{
     }
 
     public function getport(){
-        $stmt= $this->db->query("SELECT * FROM port ");
-        $stmt->execute();
-        return $stmt->fetchAll();
+        $this->db->query("SELECT * FROM port ");
+        // $this->db->bind(':id',$id);
+        $this->db->execute();
+        return $this->db->fetchAll();
       
      
          }
-
+         
+         public function getports(){
+             $this->db->query("SELECT * FROM port ");
+             $this->db->execute();
+             return $this->db->fetchAll();
+           
+          
+              }
 
     public function insertport($name){
-     
-        $sql =("INSERT INTO 'port'(name) VALUES (:name) ");
+       
+        $sql =("INSERT INTO port (name) VALUES (:name) ");
         
-        $stmt=$this->db->query($sql);
-        $stmt->bindValue(':name',$name);
-        $stmt->execute();
-        if ($stmt->rowCount()>0) {
+        $this->db->query($sql);
+        $this->db->bind(':name',$name);
+        $this->db->execute();
+        if ($this->db->rowCount()>0) {
             return true;
         } else {
             return false;
@@ -35,14 +43,19 @@ class port{
     }
 
 
-    public function deleteport ($id){
-        $sql ="DELETE FROM port WHERE id=:id";
-       $stmt= $this->db->query($sql);
-       $stmt->bindValue(':id',$id);
+   
+
+      public function deleteport ($id){
+       
+        $this->db->query("DELETE FROM port WHERE id=:id");
+       $this->db->bind(':id',$id);
+       if ($this->db->execute()) {
+        return true;
+       } else {
+        return false;
+       }
+       
       }
 
 
 }
-
-
-    ?>

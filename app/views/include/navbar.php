@@ -7,7 +7,7 @@
     <!-- Header -->
     <header class="h-16 w-full flex items-center relative justify-end px-5 space-x-10 bg-gray-800">
       <?php if (isset($_SESSION['role'])) : ?>
-        <?php if ($_SESSION['role'] == 1) : ?>
+        <?php if ($_SESSION['role'] == 0) : ?>
           <div class="h-10 w-10 flex items-center justify-center rounded-lg cursor-pointer hover:text-gray-800 hover:bg-white  hover:duration-300 hover:ease-linear focus:bg-white">
             <a href="<?= URLROOT ?>cruiseController/admin"><i class='fa fa-user'></i></a>
           </div>

@@ -94,4 +94,5 @@ class DB {
         {
             return $this->stmt->rowCount();
         }
+
     }

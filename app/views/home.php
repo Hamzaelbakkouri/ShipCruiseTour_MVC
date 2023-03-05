@@ -1,4 +1,4 @@
-<?php require APPROOT . '/views/include/navbar.php'; ?>
+<?php require_once "include/navbar.php";?>
 <section class="home" id="home">
 
     <div class="content">
@@ -372,5 +372,4 @@
     </div>
 
 </div>
-
-<?php require APPROOT . '/views/inc/footer.php'; ?>
+    <?php require_once "include/footer.php"; ?>
