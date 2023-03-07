@@ -1,5 +1,6 @@
 <?php require_once "include/navbar.php"; ?>
 
+
 <div class="select_div" style="width: 100% !important;">
     <form class="flex justify-center gap-3" action="<?php echo URLROOT; ?>cruiseController/trie" method="post">
 
@@ -91,6 +92,7 @@
             background: #0085b6;
         }
     </style>
+    
     <main class="cruiseContainer">
         <div id="paginated-list" data-current-page="1" aria-live="polite" style="padding: 30px; display: flex; flex-wrap: wrap; gap: 10px;">
             <!-- <div id="paginated-list" data-current-page="1" aria-live="polite"> -->
