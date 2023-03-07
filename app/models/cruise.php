@@ -82,13 +82,12 @@ class Cruise
     }
 
 
-    public function search($sqlEnd)
+    public function search($param)
     {
-
-        $sql = "SELECT * FROM cruise" . $sqlEnd;
+        $sql = "SELECT * FROM `cruise` WHERE $param ";
         $this->db->query($sql);
         $this->db->execute();
-        $this->db->fetchAll();
-        return $this->db->fetchAll();
+        $result = $this->db->fetchAll();
+        return $result;
     }
 }

@@ -8,17 +8,13 @@ class Reservation{
         $this->db = new DB;
     }
 
-    public function insertReservation($ID_user,$port ,$price_reservation,$id_Room,$ID_cruise){
+    public function insertReservation($ID_user,$price_reservation,$id_Room,$ID_cruise){
     
-        $sql ="INSERT INTO reservation (ID_user, port, price_reservation , id_Room, ID_cruise) VALUES (:id_user,:port,:price_reservation ,:id_Room,:ID_cruise)";
-        // var_dump($sql);
+        $sql ="INSERT INTO reservation (ID_user, price_reservation , id_Room, ID_cruise) VALUES (:id_user,:price_reservation ,:id_Room,:ID_cruise)";
         
         $this->db->query($sql);
         $this->db->bind(':id_user',$ID_user);
-        // $this->db->bind(':date_reservation',$date_reservation);
-        $this->db->bind(':port',$port);
         $this->db->bind(':price_reservation',$price_reservation);
-        // $this->db->bind(':trajet ',$trajet);
         $this->db->bind(':id_Room',$id_Room);
         $this->db->bind(':ID_cruise',$ID_cruise);
         $this->db->execute();
@@ -27,7 +23,6 @@ class Reservation{
         } else {
             return false;
         }
-        
     }
 
     public function getreservation()

@@ -1,0 +1,32 @@
+<?php require_once "include/navbar.php"; ?>
+<div class="w-full flex justify-center p-20">
+    <div class="w-96 p-8 rounded border border-gray-200">
+        <h1 class="text-white font-medium text-3xl">Add ship</h1>
+        <form method="POST" action="<?= URLROOT ?>navireController/add_navire">
+            <div class="mt-8 grid lg:grid-cols-2 gap-4">
+                <div>
+                    <label for="name" class="text-sm text-white block mb-1 font-medium">Name</label>
+                    <input type="text" name="ship" id="name" class="bg-gray-100 border border-gray-200 rounded py-1 px-3 block focus:ring-blue-500 focus:border-blue-500 text-gray-700 " placeholder="ship name" />
+                </div>
+                <br>
+                <div>
+                    <label for="name" class="text-sm text-white block mb-1 font-medium">Rooms</label>
+                    <input type="number" name="room" id="name" class="bg-gray-100 border border-gray-200 rounded py-1 px-3 block focus:ring-blue-500 focus:border-blue-500 text-gray-700 " placeholder="ship name" />
+                </div>
+                <br>
+                <div>
+                    <label for="name" class="text-sm text-white block mb-1 font-medium">Places</label>
+                    <input type="number" name="places" id="name" class="bg-gray-100 border border-gray-200 rounded py-1 px-3 block focus:ring-blue-500 focus:border-blue-500 text-gray-700 " placeholder="ship name" />
+                </div>
+
+            </div>
+            <div class="space-x-4 mt-8">
+                <button name="submit" type="submit" class="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-600 active:bg-blue-700 disabled:opacity-50">Create</button>
+                <!-- Secondary -->
+                <button class="py-2 px-4 bg-white border border-gray-200 text-gray-600 rounded hover:bg-gray-100 active:bg-gray-200 disabled:opacity-50">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<?php require_once "include/footer.php"; ?>

@@ -2,7 +2,6 @@
 
 <div class="p-8 rounded border border-gray-200">
     <h1 class="font-medium text-3xl">Add port</h1>
-    <p class="text-gray-600 mt-6">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dignissimos dolorem vel cupiditate laudantium dicta.</p>
     <form method="POST" action="<?= URLROOT ?>portController/add_port">
         <div class="mt-8 grid lg:grid-cols-2 gap-4">
             <div>

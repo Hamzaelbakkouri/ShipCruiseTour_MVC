@@ -9,6 +9,7 @@ class cruiseController extends Controller
     private $reservationModel;
     private $portModel;
     private $shipModel;
+
     public function __construct()
     {
         $this->cruiseModel = $this->model('cruise');
@@ -56,10 +57,6 @@ class cruiseController extends Controller
             $Date = $_POST['Date'];
             $trajet = $_POST['trajet'];
 
-            // echo '<pre>';
-            // var_dump($_POST);
-            // echo '</pre>';
-            // exit;
             $this->cruiseModel->insertCruise($name, $ship, $price, $picture, $nights, $ports, $Date, $trajet);
             return $this->Admin();
         } else {
@@ -79,27 +76,25 @@ class cruiseController extends Controller
     public function booking()
     {
         $cards = $this->cruiseModel->getCruises();
-
-        // $ports = $this->portModel->getport();
         $navires = $this->shipModel->getship();
+        $port = $this->portModel->getport();
         $data = [
             'cards' => $cards,
-            'navires' => $navires
+            'navires' => $navires,
+            'ports' => $port
         ];
+        //  var_dump ($port);
+        //  die;
 
         $this->view('booking', $data);
     }
-
 
     public function reservation()
     {
         if (isset($_POST['submit'])) {
 
-
             $ID_cruise = (int)$_POST['id_cruise'];
             $Price = (float)$_POST['Price'];
-            $trajet = $_POST['trajet'];
-            $port = $_POST['port'];
 
             $id_roomType_price = $_POST['id_roomType_price'];
             $roomTypeArray = explode(' ', $id_roomType_price);
@@ -116,8 +111,7 @@ class cruiseController extends Controller
             $ID_user = $_SESSION['Id'];
 
 
-            $this->reservationModel->insertReservation($ID_user, $port, $price_reservation, $trajet, $id_Room, $ID_cruise);
-
+            $this->reservationModel->insertReservation($ID_user, $price_reservation, $id_Room, $ID_cruise);
 
             $this->book_now($ID_cruise);
         } else {
@@ -132,8 +126,6 @@ class cruiseController extends Controller
 
         $reservation = $this->reservationModel->getreservationByUserID($ID_user);
 
-
-
         $data = [
 
             'reservations' => $reservation
@@ -146,10 +138,7 @@ class cruiseController extends Controller
     public function book_now($id)
     {
         $ID_user = $_SESSION['Id'];
-
         $reservation = $this->reservationModel->getreservationByUserID($ID_user);
-
-        // $cruise = $this->cruiseModel->getCruise($id);
 
         $data = [
             // 'cruise'=> $cruise,
@@ -177,8 +166,6 @@ class cruiseController extends Controller
         $this->view('book_now', $data);
     }
 
-
-
     public function insertAllinfo()
     {
 
@@ -199,10 +186,7 @@ class cruiseController extends Controller
     public function getPort()
     {
         $port = $this->portModel->getport();
-        $data = [
-            'port' => $port
-        ];
-        $this->view('booking', $data);
+        return $port;
     }
 
 
@@ -211,8 +195,6 @@ class cruiseController extends Controller
     {
 
         $reservation = $this->reservationModel->getreservations($id);
-
-
         $date = $reservation->date_reservation;
         $dateArray = explode('-', $date);
         $year = $dateArray[0];
@@ -222,7 +204,7 @@ class cruiseController extends Controller
         $current_month = date('m');
         $current_day = date('d');
 
-
+        
         if ($year == $current_year && $month == $current_month && ($day - $current_day) > 2) {
             $this->bookingModel->deleteBooking($id);
         } elseif ($year == $current_year && $month > $current_month) {
@@ -318,7 +300,8 @@ class cruiseController extends Controller
                     'ports' => $ports,
                     'navires' => $navires
                 ];
-                $this->view('booking', $data);
+                    $this->view('booking', $data);
+
             } else {
                 require_once "include/navbar.php";
                 echo ('<p class="NotFound">Cruise Not Found</p>

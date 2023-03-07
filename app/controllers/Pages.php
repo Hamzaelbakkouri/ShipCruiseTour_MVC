@@ -41,10 +41,7 @@ class Pages extends Controller
 
     public function booking()
     {
-        $data = [
-            'title' => 'booking'
-        ];
-        $this->view('booking', $data);
+        $this->view('booking');
     }
 
 
@@ -84,6 +81,11 @@ class Pages extends Controller
             'title' => 'add_port'
         ];
         $this->view('add_port', $data);
+    }
+
+    public function add_ship()
+    {
+        $this->view('add_ship');
     }
 
     public function edite()

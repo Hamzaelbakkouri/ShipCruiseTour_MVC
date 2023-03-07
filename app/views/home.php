@@ -6,7 +6,7 @@
         <h3 data-aos="fade-up" data-aos-delay="300">SHIPTOUR</h3>
         <p data-aos="fade-up" data-aos-delay="450">Lorem ipsum dolor sit amet consectetur adipisicing elit.
             Necessitatibus quia illum quod perspiciatis harum in possimus? Totam consequuntur officia quia?</p>
-        <a data-aos="fade-up" data-aos-delay="600" href="<?php echo URLROOT; ?> /pages/cruise" class=" btn">book
+        <a data-aos="fade-up" data-aos-delay="600" href="<?php echo URLROOT; ?>cruiseController/booking" class=" btn">book
             now</a>
     </div>
 
@@ -23,7 +23,7 @@
 
         <div class="box" data-aos="fade-up" data-aos-delay="150">
             <div class="image">
-                <img src="<?php echo URLROOT; ?>/images/des-1.jpg" alt="">
+                <img src="<?php echo URLROOT; ?>/img/chihaja1.jpg" alt="">
             </div>
             <div class="content">
                 <h3>tours & travel</h3>
@@ -34,7 +34,7 @@
 
         <div class="box" data-aos="fade-up" data-aos-delay="300">
             <div class="image">
-                <img src="<?php echo URLROOT; ?>/images/pexels-pixabay-161342.jpg" alt="">
+                <img src="<?php echo URLROOT; ?>/img/chihaja2.jpg" alt="">
             </div>
             <div class="content">
                 <h3>tours & travel</h3>
@@ -45,7 +45,7 @@
 
         <div class="box" data-aos="fade-up" data-aos-delay="450">
             <div class="image">
-                <img src="<?php echo URLROOT; ?>/images/des-3.jpg" alt="">
+                <img src="<?php echo URLROOT; ?>/img/chihaja3.jpg" alt="">
             </div>
             <div class="content">
                 <h3>tours & travel</h3>
@@ -56,7 +56,7 @@
 
         <div class="box" data-aos="fade-up" data-aos-delay="600">
             <div class="image">
-                <img src="<?php echo URLROOT; ?>/images/des-4.jpg" alt="">
+                <img src="<?php echo URLROOT; ?>/img/chihaja4.jpg" alt="">
             </div>
             <div class="content">
                 <h3>tours & travel</h3>
@@ -67,7 +67,7 @@
 
         <div class="box" data-aos="fade-up" data-aos-delay="750">
             <div class="image">
-                <img src="<?php echo URLROOT; ?>/images/des-5.jpg" alt="">
+                <img src="<?php echo URLROOT; ?>/img/chihaja5.jpg" alt="">
             </div>
             <div class="content">
                 <h3>tours & travel</h3>
@@ -78,7 +78,7 @@
 
         <div class="box" data-aos="fade-up" data-aos-delay="900">
             <div class="image">
-                <img src="<?php echo URLROOT; ?>/images/pexels-dmitry-zvolskiy-1544412.jpg" alt="">
+                <img src="<?php echo URLROOT; ?>/img/chihaja7.jpg" alt="">
             </div>
             <div class="content">
                 <h3>tours & travel</h3>
@@ -89,7 +89,7 @@
 
         <div class="box" data-aos="fade-up" data-aos-delay="1150">
             <div class="image">
-                <img src="<?php echo URLROOT; ?>/images/des-7.jpg" alt="">
+                <img src="<?php echo URLROOT; ?>/img/OIP (3).jpeg" alt="">
             </div>
             <div class="content">
                 <h3>tours & travel</h3>
@@ -100,7 +100,7 @@
 
         <div class="box" data-aos="fade-up" data-aos-delay="1300">
             <div class="image">
-                <img src="<?php echo URLROOT; ?>/images/des-8.jpg" alt="">
+                <img src="<?php echo URLROOT; ?>/img/OIP (5).jpeg" alt="">
             </div>
             <div class="content">
                 <h3>tours & travel</h3>
@@ -117,7 +117,7 @@
 
 <!-- services section starts  -->
 
-<!-- <section class="services" id="services">
+<section class="services" id="services">
 
     <div class="heading">
         <span>our services</span>
@@ -164,7 +164,7 @@
 
     </div>
 
-</section> -->
+</section>
 
 <!-- services section ends -->
 
@@ -180,55 +180,55 @@
     <div class="box-container">
 
         <div class="box" data-aos="zoom-in-up" data-aos-delay="150">
-            <img src="<?php echo URLROOT; ?>/images/gallery-img-1.jpg" alt="">
+            <img src="<?php echo URLROOT; ?>/img/chihaja7.jpg" alt="">
             <span>travel spot</span>
             <h3>iceland</h3>
         </div>
 
         <div class="box" data-aos="zoom-in-up" data-aos-delay="300">
-            <img src="<?php echo URLROOT; ?>/images/gallery-img-2.jpg" alt="">
+            <img src="<?php echo URLROOT; ?>/img/chihaja6.jpg" alt="">
             <span>travel spot</span>
             <h3>greenland</h3>
         </div>
 
         <div class="box" data-aos="zoom-in-up" data-aos-delay="450">
-            <img src="<?php echo URLROOT; ?>/images/gallery-img-3.jpg" alt="">
+            <img src="<?php echo URLROOT; ?>/img/chihaja5.jpg" alt="">
             <span>travel spot</span>
             <h3>alaska</h3>
         </div>
 
         <div class="box" data-aos="zoom-in-up" data-aos-delay="150">
-            <img src="<?php echo URLROOT; ?>/images/gallery-img-4.jpg" alt="">
+            <img src="<?php echo URLROOT; ?>/img/chihaja4.jpg" alt="">
             <span>travel spot</span>
             <h3>thailand</h3>
         </div>
 
         <div class="box" data-aos="zoom-in-up" data-aos-delay="300">
-            <img src="<?php echo URLROOT; ?>/images/gallery-img-5.jpg" alt="">
+            <img src="<?php echo URLROOT; ?>/img/chihaja3.jpg" alt="">
             <span>travel spot</span>
             <h3>brazil</h3>
         </div>
 
         <div class="box" data-aos="zoom-in-up" data-aos-delay="450">
-            <img src="<?php echo URLROOT; ?>/images/gallery-img-6.jpg" alt="">
+            <img src="<?php echo URLROOT; ?>/img/chihaja2.jpg" alt="">
             <span>travel spot</span>
             <h3>maldive</h3>
         </div>
 
         <div class="box" data-aos="zoom-in-up" data-aos-delay="150">
-            <img src="<?php echo URLROOT; ?>/images/gallery-img-7.jpg" alt="">
+            <img src="<?php echo URLROOT; ?>/img/chihaja1.jpg" alt="">
             <span>travel spot</span>
             <h3>iceland</h3>
         </div>
 
         <div class="box" data-aos="zoom-in-up" data-aos-delay="300">
-            <img src="<?php echo URLROOT; ?>/images/gallery-img-8.jpg" alt="">
+            <img src="<?php echo URLROOT; ?>/img/chihaja8.jpg" alt="">
             <span>travel spot</span>
             <h3>alaska</h3>
         </div>
 
         <div class="box" data-aos="zoom-in-up" data-aos-delay="450">
-            <img src="<?php echo URLROOT; ?>/images/gallery-img-9.jpg" alt="">
+            <img src="<?php echo URLROOT; ?>/img/chihaja9.jpg" alt="">
             <span>travel spot</span>
             <h3>maldive</h3>
         </div>
@@ -313,7 +313,7 @@
 
         <div class="box" data-aos="fade-up" data-aos-delay="150">
             <div class="image">
-                <img src="<?php echo URLROOT; ?>/images/safina11.jpg" alt="">
+                <img src="<?php echo URLROOT; ?>/img/chihaja4.jpg" alt="">
             </div>
             <div class="content">
                 <a href="#" class="link">Lorem ipsum dolor,eveniet hic sapiente impedit repellendus.</a>
@@ -327,7 +327,7 @@
 
         <div class="box" data-aos="fade-up" data-aos-delay="300">
             <div class="image">
-                <img src="<?php echo URLROOT; ?>/images/safina55.jpg" alt="">
+                <img src="<?php echo URLROOT; ?>/img/chihaja7.jpg" alt="">
             </div>
             <div class="content">
                 <a href="#" class="link">Lorem ipsum dolor,eveniet hic sapiente impedit repellendus.</a>
@@ -341,7 +341,7 @@
 
         <div class="box" data-aos="fade-up" data-aos-delay="450">
             <div class="image">
-                <img src="<?php echo URLROOT; ?>/images/safina66.jpg" alt="">
+                <img src="<?php echo URLROOT; ?>/img/chihaja2.jpg" alt="">
             </div>
             <div class="content">
                 <a href="#" class="link">Lorem ipsum dolor,eveniet hic sapiente impedit repellendus.</a>
@@ -368,7 +368,7 @@
         <h3>Let's Explore This World</h3>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum voluptatum praesentium amet quibusdam quam
             officia suscipit odio.</p>
-        <a href="<?php echo URLROOT; ?> /pages/cruise" class="btn">book now</a>
+        <a href="<?php echo URLROOT; ?> /cruiseController/booking" class="btn">book now</a>
     </div>
 
 </div>

@@ -27,7 +27,7 @@ class portcontroller extends Controller
             $name = $_POST['name'];
 
             $this->portModel->insertport($name);
-            return $this->Admin_ports();
+            return $this->admin_ports();
         } else {
             $this->view('add_port');
         }
@@ -45,7 +45,7 @@ class portcontroller extends Controller
             ];
             $this->view('Admin_ports', $data);
         } else {
-            echo ('ports not found');
+            echo ('not found');
         }
     }
 
