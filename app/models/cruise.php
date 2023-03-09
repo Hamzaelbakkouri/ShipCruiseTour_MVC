@@ -11,25 +11,24 @@ class Cruise
 
     public function getCruises()
     {
-        $this->db->query("SELECT cruise.* , port.name as start_port FROM cruise inner join port where cruise.start_port = port.id ");
+        $this->db->query("SELECT cruise.*, port.name as start_port FROM cruise  inner join port where cruise.start_port = port.id ");
         $this->db->execute();
         return $this->db->fetchAll();
     }
 
     function addtrajet($id_croi, $id_port)
     {
-        $sql = "
-        SET foreign_key_checks = 0; 
-        INSERT INTO `road` (`ID_port`, `ID_cruise`) VALUES ('$id_croi', '$id_port')";
+        $sql = "INSERT INTO `road` (`ID_port`, `ID_cruise`) VALUES ( '$id_port','$id_croi')";
         $stmt = $this->db->query($sql);
         $stmt->execute();
     }
 
-    function gettrajet($id_croi)
+    function gettrajet($param)
     {
-        $this->db->query("SELECT p.name from port p inner join road t on t.ID_port=p.id and t.id_cruise=$id_croi ");
+        $this->db->query("SELECT * FROM `road` r INNER JOIN `port` p ON r.ID_port = p.id WHERE r.ID_cruise = :id");
+        $this->db->bind(':id' , $param);
         $this->db->execute();
-        return $this->db->fetch();
+        return $this->db->fetchAll();
     }
 
     public function getCruise($id)
@@ -42,7 +41,7 @@ class Cruise
 
 
 
-    public function insertCruise($name, $ship, $price, $picture, $nights, $ports, $date, array $trajet)
+    public function insertCruise($name, $ship, $price, $picture, $nights, $ports, $date, $trajet)
     {
 
 
@@ -57,13 +56,13 @@ class Cruise
         $this->db->bind(':start_date', $date);
 
         if ($this->db->execute()) {
-            $sql = "SELECT `ID_cruise` FROM `cruise` order by ID_cruise desc limit 1";
+            $sql = "SELECT MAX(ID_cruise) AS LastId FROM `cruise` limit 1";
             $stmt = $this->db->query($sql);
             $this->db->execute();
 
             $data = $stmt->fetch();
             for ($i = 0; $i < count($trajet); $i++) {
-                $this->addtrajet($data['ID_cruise'], $trajet[$i]);
+                $this->addtrajet($data['LastId'], $trajet[$i]);
             }
             return true;
         };
@@ -90,4 +89,34 @@ class Cruise
         $result = $this->db->fetchAll();
         return $result;
     }
+
+    // function filterbymonth($month)
+    // {
+    //     $sql = "SELECT * FROM `cruise` WHERE `start_date` = :month";
+    //     $this->db->query($sql);
+    //     $this->db->bind(':month', $month);
+    //     $this->db->execute();
+    //     $data = $this->db->fetchAll(PDO::FETCH_ASSOC);
+    //     return $data;
+    // }
+
+    // function filterbyport($port)
+    // {
+    //     $sql = "SELECT * FROM `cruise` WHERE `start_port` = :port";
+    //     $this->db->query($sql);
+    //     $this->db->bind(':port', $port);
+    //     $this->db->execute();
+    //     $data = $this->db->fetchAll(PDO::FETCH_ASSOC);
+    //     return $data;
+    // }
+
+    // function filterbynavire($navire)
+    // {
+    //     $sql = "SELECT * FROM `cruise` WHERE `ship` = :navire";
+    //     $this->db->query($sql);
+    //     $this->db->bind(':navire', $navire);
+    //     $this->db->execute();
+    //     $data = $this->db->fetchAll(PDO::FETCH_ASSOC);
+    //     return $data;
+    // }
 }

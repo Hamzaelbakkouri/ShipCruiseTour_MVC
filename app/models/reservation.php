@@ -37,8 +37,6 @@ class Reservation{
 
     public function getreservations($id)
     {
-
-   
         $sql = "SELECT * FROM reservation WHERE id_reservation = :id";
         $this->db->query($sql);
         $this->db->bind(':id',$id);

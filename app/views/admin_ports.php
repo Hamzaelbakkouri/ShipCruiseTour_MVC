@@ -10,7 +10,7 @@
 <div class="w-3/4 mx-auto mt-6">
 
     <div class="flex flex-col">
-        <h1 class="text-6xl font-extrabold tracking-tighter text-center text-transparent bg-clip-text bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 mb-4">Dashboard Controller</h1>
+        <h1 class="text-6xl font-extrabold tracking-tighter text-center text-white mb-4">Dashboard Controller</h1>
         <div class="overflow-x-auto shadow-md sm:rounded-lg">
 
 

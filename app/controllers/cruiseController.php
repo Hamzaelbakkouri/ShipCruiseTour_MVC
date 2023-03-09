@@ -67,36 +67,37 @@ class cruiseController extends Controller
         }
     }
 
-
-    function gettrajet()
+    public function getTraject($id)
     {
-        $id_cruise = $_POST['id_cruise'];
-        $trajet = $this->cruiseModel->gettrajet($id_cruise);
-        return $trajet;
-    }
+        $traject = $this->cruiseModel->gettrajet($id);
+        $trajet = [
+            'places' => $traject
+        ];
 
+        echo json_encode($trajet);
+        die;
+    }
 
     public function booking()
     {
-        # code...
         $cards = $this->cruiseModel->getCruises();
+        $param = $cards[0]->ID_cruise;
+        $trajet = $this->cruiseModel->gettrajet($param);
+
         $navires = $this->shipModel->getship();
         $port = $this->portModel->getport();
         $data = [
             'cards' => $cards,
             'navires' => $navires,
-            'ports' => $port
+            'ports' => $port,
+            'trajet' => $trajet
         ];
-        //  var_dump ($port);
-        //  die;
-
         $this->view('booking', $data);
     }
 
     public function reservation()
     {
         if (isset($_SESSION['Id'])) {
-            # code...
             if (isset($_POST['submit'])) {
 
                 $ID_cruise = (int)$_POST['id_cruise'];
@@ -113,9 +114,7 @@ class cruiseController extends Controller
                 $this->roomModel->insertRoomTypes($id_type_room);
                 $room = $this->roomModel->getRoom($id_type_room);
                 $id_Room = $room->id;
-
                 $ID_user = $_SESSION['Id'];
-
 
                 $this->reservationModel->insertReservation($ID_user, $price_reservation, $id_Room, $ID_cruise);
 
@@ -181,21 +180,6 @@ class cruiseController extends Controller
         }
     }
 
-    // public function insertAllinfo()
-    // {
-
-    //     $room = $_POST['id_roomType_price'];
-    //     $roomTypeArray = explode(" ", $room);
-    //     $id_roomType = $roomTypeArray[0];
-    //     $priceRoomType = $roomTypeArray[1];
-    //     $bookingDate = $_POST["date"];
-    //     $totalPrice = (float)$_POST["Price"] + (float)$priceRoomType;
-    //     $id_cruise = $_POST["id_cruise"];
-    //     $id_user =  1;
-    //     $this->reservationModel->insertReservation($id_user, $bookingDate, $totalPrice, $id_roomType, $id_cruise);
-
-    //     $this->view('home');
-    // }
 
 
     public function getPort()
@@ -211,23 +195,21 @@ class cruiseController extends Controller
     public function delete_ticket($id)
     {
         if (isset($_SESSION['Id'])) {
-            # code...
+
             $reservation = $this->reservationModel->getreservations($id);
-            $date = $reservation->date_reservation;
+            $cruise = $this->cruiseModel->getCruise($reservation->ID_cruise);
+            $date = $cruise->start_date;
             $dateArray = explode('-', $date);
-            $year = $dateArray[0];
             $month = $dateArray[1];
             $day = $dateArray[2];
-            $current_year = date('Y');
+
             $current_month = date('m');
             $current_day = date('d');
 
-
-            if ($year == $current_year && $month == $current_month && ($day - $current_day) > 2) {
+            $result = $day - $current_day;
+            if ($month == $current_month && $result > 2) {
                 $this->bookingModel->deleteBooking($id);
-            } elseif ($year == $current_year && $month > $current_month) {
-                $this->bookingModel->deleteBooking($id);
-            } elseif ($year > $current_year) {
+            } elseif ($month > $current_month) {
                 $this->bookingModel->deleteBooking($id);
             } else {
                 echo 'You can not delete reservation';
@@ -238,23 +220,48 @@ class cruiseController extends Controller
         }
     }
 
+    // //filter by month 
+    // function filterbymonth(){
+    //     if($_SERVER['REQUEST_METHOD']=='POST'){
+    //         $month=$_POST['month'];
+    //         $data=$this->cruiseModel->filterbymonth($month);
+    //         echo json_encode($data);
+    //     }
+    // }
 
+    // //filter by port 
+    // function filterbyport(){
+    //     if($_SERVER['REQUEST_METHOD']=='POST'){
+    //         $port=$_POST['port'];
+    //         $data=$this->cruiseModel->filterbyport($port);
+    //         echo json_encode($data);
+    //     }
+    // }
 
-    public function trie()
+    // //filter by navire 
+    // function filterbynavire(){
+    //     if($_SERVER['REQUEST_METHOD']=='POST'){
+    //         $navire=$_POST['navire'];
+    //         $data=$this->cruiseModel->filterbynavire($navire);
+    //         echo json_encode($data);
+    //     }
+    // }
+
+    public function filtre()
     {
-        
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             $ship = $_POST['ship'];
             $portDe = $_POST['startPort'];
             $date = $_POST['date'];
 
+            // var_dump($ship,$portDe,$date);
+            // die;
             if ($ship != 0) {
                 $sqlNav = 'ship =' . $ship;
             } else {
                 $sqlNav = '';
             }
-
 
             if ($portDe != 0) {
                 $sqlportDe = 'start_port =' . $portDe;
@@ -285,14 +292,15 @@ class cruiseController extends Controller
                 $sql = '';
             }
             if (count($sqlArrayNotEmpty) == 1) {
-                $sql = ' WHERE ' . $sqlArrayNotEmpty[0];
+                $sql = $sqlArrayNotEmpty[0];
             }
             if (count($sqlArrayNotEmpty) == 2) {
-                $sql = ' WHERE ' . $sqlArrayNotEmpty[0] . ' AND ' . $sqlArrayNotEmpty[1];
+                $sql = $sqlArrayNotEmpty[0] . ' AND ' . $sqlArrayNotEmpty[1];
             }
             if (count($sqlArrayNotEmpty) == 3) {
-                $sql = ' WHERE ' . $sqlArrayNotEmpty[0] . ' AND ' . $sqlArrayNotEmpty[1] . ' AND ' . $sqlArrayNotEmpty[2];
+                $sql = $sqlArrayNotEmpty[0] . ' AND ' . $sqlArrayNotEmpty[1] . ' AND ' . $sqlArrayNotEmpty[2];
             }
+
             $cruises = $this->cruiseModel->search($sql);
             $ports = $this->portModel->getport();
             $navires = $this->shipModel->getship();
@@ -305,12 +313,10 @@ class cruiseController extends Controller
                 $this->view('booking', $data);
             } else {
                 require_once "../App/views/include/navbar.php";
-                echo ('<p class="NotFound">Cruise Not Found</p>
-                ');
+                echo ('<p class="NotFound  text-white text-lg">Cruise Not Found</p>');
                 require_once "../App/views/include/footer.php";
             }
         } else {
-            // get the Cruise
             $cruises = $this->cruiseModel->getCruises();
             $ports = $this->portModel->getport();
             $navires = $this->shipModel->getship();
@@ -323,8 +329,7 @@ class cruiseController extends Controller
                 $this->view('booking', $data);
             } else {
                 require_once "include/navbar.php";
-                echo ('<p class="NotFound">Cruise Not Found</p>
-                ');
+                echo ('<p class="NotFound text-white text-lg">Cruise Not Found</p>');
                 require_once "include/footer.php";
             }
         }

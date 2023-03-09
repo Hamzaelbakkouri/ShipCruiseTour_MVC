@@ -1,6 +1,6 @@
-<footer class="p-4 rounded-lg shadow md:px-6 md:py-8 bg-gray-800">
+<footer class="rounded-lg shadow md:px-6 md:py-8 bg-gray-800">
   <div class="sm:flex sm:items-center sm:justify-between">
-    <a href="https://flowbite.com/" class="flex items-center mb-4 sm:mb-0">
+    <a href="" class="flex items-center mb-4 sm:mb-0">
       <img src="<?=URLROOT?>img/logo.png" class="h-20 mr-3 w-20" alt="Flowbite Logo" />
     </a>
     <ul class="flex flex-wrap items-center mb-6 text-sm text-gray-500 sm:mb-0 dark:text-gray-400">

@@ -78,6 +78,11 @@ class DB {
 
         //data fetch
 
+        public function fetchAll2()
+        {
+            $this->stmt->execute();
+            return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
         public function fetchAll()
         {
             $this->stmt->execute();
