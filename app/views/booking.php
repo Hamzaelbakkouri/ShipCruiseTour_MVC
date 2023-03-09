@@ -128,14 +128,19 @@
                                 <span class="text-white text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:white ml-3"><?= $cards->nights_number ?>nights</span>
                             </div>
                             <div class="text-white">
-                                <p>trajet</p>
+                                <h2>trajet </h2>
                                 <h2 class="text-white">
-                                    <?php foreach ($data['trajet'] as $road) :?>
-                                        <p><?= $road->name?></p>
-                                        <?php endforeach;?>
-                                    </h2>
-                                </div>
-                                <div class="flex items-center justify-between">
+                                    <?php foreach ($cards->trajet as $road) : ?>
+                                        <p>
+                                            <?= $road->name ?>
+                                            <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd">
+                                                <path d="M21.883 12l-7.527 6.235.644.765 9-7.521-9-7.479-.645.764 7.529 6.236h-21.884v1h21.883z" />
+                                            </svg>
+                                        </p>
+                                    <?php endforeach; ?>
+                                </h2>
+                            </div>
+                            <div class="flex items-center justify-between">
                                 <span class="text-3xl font-bold text-white dark:text-white">$<?= $cards->price ?></span>
                                 <a href="<?= URLROOT . 'cruiseController/order/' . $cards->ID_cruise ?>" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Book Now</a>
                             </div>

@@ -24,10 +24,8 @@ class cruiseController extends Controller
     public function Admin()
     {
         if (isset($_SESSION['Id'])) {
-            # code...
+
             $cruises = $this->cruiseModel->getCruises();
-
-
             if ($cruises) {
                 $data = [
                     'cruises' => $cruises
@@ -81,8 +79,10 @@ class cruiseController extends Controller
     public function booking()
     {
         $cards = $this->cruiseModel->getCruises();
-        $param = $cards[0]->ID_cruise;
-        $trajet = $this->cruiseModel->gettrajet($param);
+
+        foreach ($cards as $i => $cr) {
+            $cards[$i]->trajet = $this->cruiseModel->gettrajet($cr->ID_cruise);
+        };
 
         $navires = $this->shipModel->getship();
         $port = $this->portModel->getport();
@@ -90,7 +90,6 @@ class cruiseController extends Controller
             'cards' => $cards,
             'navires' => $navires,
             'ports' => $port,
-            'trajet' => $trajet
         ];
         $this->view('booking', $data);
     }
@@ -128,7 +127,7 @@ class cruiseController extends Controller
     public function ticket()
     {
         if (isset($_SESSION['Id'])) {
-            # code...
+
             $ID_user = $_SESSION['Id'];
 
             $reservation = $this->reservationModel->getreservationByUserID($ID_user);
@@ -164,7 +163,6 @@ class cruiseController extends Controller
     public function order($id)
     {
         if (isset($_SESSION['Id'])) {
-            # code...
             $cruise = $this->cruiseModel->getCruise($id);
             $room_type = $this->type_roomModel->getRoomTypes();
             $port = $this->portModel->getports();
@@ -180,8 +178,6 @@ class cruiseController extends Controller
         }
     }
 
-
-
     public function getPort()
     {
         if (isset($_SESSION['role']) == 0) {
@@ -189,8 +185,6 @@ class cruiseController extends Controller
             return $port;
         }
     }
-
-
 
     public function delete_ticket($id)
     {
@@ -219,33 +213,6 @@ class cruiseController extends Controller
             redirect('cruiseController/ticket');
         }
     }
-
-    // //filter by month 
-    // function filterbymonth(){
-    //     if($_SERVER['REQUEST_METHOD']=='POST'){
-    //         $month=$_POST['month'];
-    //         $data=$this->cruiseModel->filterbymonth($month);
-    //         echo json_encode($data);
-    //     }
-    // }
-
-    // //filter by port 
-    // function filterbyport(){
-    //     if($_SERVER['REQUEST_METHOD']=='POST'){
-    //         $port=$_POST['port'];
-    //         $data=$this->cruiseModel->filterbyport($port);
-    //         echo json_encode($data);
-    //     }
-    // }
-
-    // //filter by navire 
-    // function filterbynavire(){
-    //     if($_SERVER['REQUEST_METHOD']=='POST'){
-    //         $navire=$_POST['navire'];
-    //         $data=$this->cruiseModel->filterbynavire($navire);
-    //         echo json_encode($data);
-    //     }
-    // }
 
     public function filtre()
     {
@@ -301,14 +268,23 @@ class cruiseController extends Controller
                 $sql = $sqlArrayNotEmpty[0] . ' AND ' . $sqlArrayNotEmpty[1] . ' AND ' . $sqlArrayNotEmpty[2];
             }
 
-            $cruises = $this->cruiseModel->search($sql);
-            $ports = $this->portModel->getport();
-            $navires = $this->shipModel->getship();
-            if ($cruises) {
+
+
+
+
+
+            $cards = $this->cruiseModel->search($sql);
+            if ($cards) {
+                foreach ($cards as $i => $cr) {
+                    $cards[$i]->trajet = $this->cruiseModel->gettrajet($cr->ID_cruise);
+                };
+
+                $navires = $this->shipModel->getship();
+                $port = $this->portModel->getport();
                 $data = [
-                    'cards' => $cruises,
-                    'ports' => $ports,
-                    'navires' => $navires
+                    'cards' => $cards,
+                    'navires' => $navires,
+                    'ports' => $port,
                 ];
                 $this->view('booking', $data);
             } else {
@@ -317,14 +293,19 @@ class cruiseController extends Controller
                 require_once "../App/views/include/footer.php";
             }
         } else {
-            $cruises = $this->cruiseModel->getCruises();
-            $ports = $this->portModel->getport();
-            $navires = $this->shipModel->getship();
-            if ($cruises) {
+            $cards = $this->cruiseModel->getCruises();
+            if ($cards) {
+
+                foreach ($cards as $i => $cr) {
+                    $cards[$i]->trajet = $this->cruiseModel->gettrajet($cr->ID_cruise);
+                };
+
+                $navires = $this->shipModel->getship();
+                $port = $this->portModel->getport();
                 $data = [
-                    'cards' => $cruises,
-                    'ports' => $ports,
-                    'navires' => $navires
+                    'cards' => $cards,
+                    'navires' => $navires,
+                    'ports' => $port,
                 ];
                 $this->view('booking', $data);
             } else {

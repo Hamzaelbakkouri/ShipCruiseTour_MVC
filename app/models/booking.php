@@ -30,7 +30,7 @@ class booking
         $this->db = new DB;
 
         $sql = "INSERT INTO `reservation` (`ID_user`, `date_reservation`, `price_reservation` , `id_Room` , `ID_cruise`)
-         VALUES     (:id_user,:date_reservation,:price_reservation , :id_Room, :Id_cruise)";
+         VALUES(:id_user,:date_reservation,:price_reservation , :id_Room, :Id_cruise)";
 
         $this->db->query($sql);
         $this->db->bind(':id_user', $ID_user);
