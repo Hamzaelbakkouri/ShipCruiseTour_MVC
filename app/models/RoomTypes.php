@@ -33,7 +33,6 @@ class RoomTypes{
          } else {
              return false;
          }
-           
     }
 
 
@@ -45,6 +44,3 @@ class RoomTypes{
 
 
 }
-
-
-    ?>

@@ -11,7 +11,7 @@ class Cruise
 
     public function getCruises()
     {
-        $this->db->query("SELECT cruise.*, port.name as start_port FROM cruise  inner join port where cruise.start_port = port.id ");
+        $this->db->query("SELECT cruise.*, port.name as start_port FROM cruise  inner join port where cruise.start_port = port.id AND `start_date` > NOW() ");
         $this->db->execute();
         return $this->db->fetchAll();
     }
@@ -83,40 +83,11 @@ class Cruise
 
     public function search($param)
     {
-        $sql = "SELECT * FROM `cruise` WHERE $param ";
+        $sql = "SELECT * FROM `cruise` WHERE $param AND `start_date` > NOW() ";
         $this->db->query($sql);
         $this->db->execute();
         $result = $this->db->fetchAll();
         return $result;
     }
 
-    // function filterbymonth($month)
-    // {
-    //     $sql = "SELECT * FROM `cruise` WHERE `start_date` = :month";
-    //     $this->db->query($sql);
-    //     $this->db->bind(':month', $month);
-    //     $this->db->execute();
-    //     $data = $this->db->fetchAll(PDO::FETCH_ASSOC);
-    //     return $data;
-    // }
-
-    // function filterbyport($port)
-    // {
-    //     $sql = "SELECT * FROM `cruise` WHERE `start_port` = :port";
-    //     $this->db->query($sql);
-    //     $this->db->bind(':port', $port);
-    //     $this->db->execute();
-    //     $data = $this->db->fetchAll(PDO::FETCH_ASSOC);
-    //     return $data;
-    // }
-
-    // function filterbynavire($navire)
-    // {
-    //     $sql = "SELECT * FROM `cruise` WHERE `ship` = :navire";
-    //     $this->db->query($sql);
-    //     $this->db->bind(':navire', $navire);
-    //     $this->db->execute();
-    //     $data = $this->db->fetchAll(PDO::FETCH_ASSOC);
-    //     return $data;
-    // }
 }

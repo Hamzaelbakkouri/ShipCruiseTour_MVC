@@ -1,5 +1,6 @@
 <?php
 
+
 class cruiseController extends Controller
 {
     private $cruiseModel;
@@ -103,6 +104,11 @@ class cruiseController extends Controller
                 $Price = (float)$_POST['Price'];
 
                 $id_roomType_price = $_POST['id_roomType_price'];
+                if(empty($id_roomType_price)){
+                    echo '<script>alert("choose a room type")</script>';
+                    redirectTime('cruiseController/booking');
+                }
+                
                 $roomTypeArray = explode(' ', $id_roomType_price);
 
                 $id_type_room = (int)$roomTypeArray[0];
@@ -206,7 +212,7 @@ class cruiseController extends Controller
             } elseif ($month > $current_month) {
                 $this->bookingModel->deleteBooking($id);
             } else {
-                echo 'You can not delete reservation';
+                echo '<script>alert("You can not delete reservation")</script>';
                 redirectTime('cruiseController/ticket');
                 exit;
             }
@@ -222,8 +228,6 @@ class cruiseController extends Controller
             $portDe = $_POST['startPort'];
             $date = $_POST['date'];
 
-            // var_dump($ship,$portDe,$date);
-            // die;
             if ($ship != 0) {
                 $sqlNav = 'ship =' . $ship;
             } else {
@@ -267,11 +271,6 @@ class cruiseController extends Controller
             if (count($sqlArrayNotEmpty) == 3) {
                 $sql = $sqlArrayNotEmpty[0] . ' AND ' . $sqlArrayNotEmpty[1] . ' AND ' . $sqlArrayNotEmpty[2];
             }
-
-
-
-
-
 
             $cards = $this->cruiseModel->search($sql);
             if ($cards) {

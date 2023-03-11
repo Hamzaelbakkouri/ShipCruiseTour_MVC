@@ -29,7 +29,7 @@ class Reservation{
     {
         $sql = "SELECT 
         reservation.* , port.name as ports
-        FROM reservation inner join port where reservation.port = port.id" ;
+        FROM reservation inner join port where reservation.port = port.id AND `start_date` > NOW()" ;
         $this->db->query($sql);
         $this->db->execute();
         return $this->db->fetch();
